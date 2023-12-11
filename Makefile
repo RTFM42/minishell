@@ -12,19 +12,20 @@
 
 NAME	= minishell
 CC		= cc
-CFLAGS	= -lreadline -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror
 SRCS	= main.c
 OBJS	= $(SRCS:.c=.o)
-INCLUDE	= -I./
+RLDIR	= $(shell brew --prefix readline)
 LIBFT	= libft.a
 PRINTF	= ftprintf.a
-
+RLFLAGS	= -lreadline -L$(RLDIR)/lib
+INCLUDE	= -I./ -I$(RLDIR)/include
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT) $(PRINTF)
-	$(CC) $(CFLAGS) $^ $(INCLUDE) -o $@
+	$(CC) $(CFLAGS) $(RLFLAGS) $^ $(INCLUDE) -o $@
 
 $(LIBFT):
 		cd lib && cd libft && make all && cp $@ ../../ && make fclean;
@@ -46,7 +47,7 @@ build: all clean
 
 __debug_configure__:
 	$(eval CC := gcc)
-	$(eval CFLAGS := -g -fsanitize=address -Wall -Wextra -Werror -lreadline)
+	$(eval CFLAGS := -g -fsanitize=address -Wall -Wextra -Werror)
 
 debug: __debug_configure__ all
 
