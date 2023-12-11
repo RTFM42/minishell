@@ -22,7 +22,7 @@ int	main(void)
 		if (line == NULL || ft_strlen(line) == 0)
 		{
 			free(line);
-			break;
+			break ;
 		}
 		ft_printf("%s\n", line);
 		add_history(line);
