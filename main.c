@@ -6,7 +6,7 @@
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:07:56 by yushsato          #+#    #+#             */
-/*   Updated: 2023/12/11 17:47:52 by yushsato         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:03:43 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 
 	while (1)
 	{
-		line = readline("> ");
+		line = readline("minishell$ ");
 		if (line == NULL || ft_strlen(line) == 0)
 		{
 			free(line);
