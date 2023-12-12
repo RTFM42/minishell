@@ -6,20 +6,22 @@
 #    By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 16:07:14 by yushsato          #+#    #+#              #
-#    Updated: 2023/12/11 17:50:15 by yushsato         ###   ########.fr        #
+#    Updated: 2023/12/12 17:22:05 by yushsato         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= minishell
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
-SRCS	= main.c
+SRCS	= main.c \
+		  ms_lib/ms_readline.c \
+		  ms_lib/ms_shell.c
 OBJS	= $(SRCS:.c=.o)
 RLDIR	= $(shell brew --prefix readline)
 LIBFT	= libft.a
 PRINTF	= ftprintf.a
 RLFLAGS	= -lreadline -L$(RLDIR)/lib
-INCLUDE	= -I./ -I$(RLDIR)/include
+INCLUDE	= -I./ -Ims_lib -I$(RLDIR)/include
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@

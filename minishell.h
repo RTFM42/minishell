@@ -6,7 +6,7 @@
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:43:26 by yushsato          #+#    #+#             */
-/*   Updated: 2023/12/11 17:45:35 by yushsato         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:40:53 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,6 @@
 # include <readline/history.h>
 # include "lib/libft/libft.h"
 # include "lib/ft_printf/ft_printf.h"
+# include "ms_lib/ms_lib.h"
 
 #endif

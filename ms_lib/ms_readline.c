@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ms_readline.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 16:07:56 by yushsato          #+#    #+#             */
-/*   Updated: 2023/12/12 17:21:44 by yushsato         ###   ########.fr       */
+/*   Created: 2023/12/12 16:24:24 by yushsato          #+#    #+#             */
+/*   Updated: 2023/12/12 16:46:02 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "ms_lib.h"
 
-int	main(void)
+char	*ms_readline(void)
 {
-	while (1)
-		ms_shell();
-	exit(0);
+	char	*line;
+
+	line = readline("minishell> ");
+	if (line == NULL)
+	{
+		write(1, "-minishell: Cannot allocate memory.\n", 36);
+		exit(1);
+	}
+	return (line);
 }
