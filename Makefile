@@ -21,7 +21,7 @@ RLDIR	= $(shell brew --prefix readline)
 LIBFT	= libft.a
 PRINTF	= ftprintf.a
 RLFLAGS	= -lreadline -L$(RLDIR)/lib
-INCLUDE	= -I./ -Ims_lib -I$(RLDIR)/include
+INCLUDE	= -I./ -I./ms_lib -I$(RLDIR)/include
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@

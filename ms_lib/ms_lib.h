@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef MS_LIB_H
+#ifndef MS_LIB_H
 # define MS_LIB_H
 
 # include <stdlib.h>
