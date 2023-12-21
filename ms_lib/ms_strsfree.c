@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_shell.c                                         :+:      :+:    :+:   */
+/*   ms_strsfree.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 16:56:29 by yushsato          #+#    #+#             */
-/*   Updated: 2023/12/16 21:25:27 by yushsato         ###   ########.fr       */
+/*   Created: 2023/12/21 20:41:00 by yushsato          #+#    #+#             */
+/*   Updated: 2023/12/21 20:41:01 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ms_lib.h"
 
-void	ms_shell(void)
+void	ms_strsfree(char **strs)
 {
-	char	*line;
-	t_token	*token;
+	int	i;
 
-	line = NULL;
-	line = ms_readline();
-	token = ms_lexer(line);
-	ms_exec(token);
-	free(line);
+	i = 0;
+	while (strs[i])
+		free(strs[i++]);
+	free(strs);
 }
