@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_strsfree.c                                      :+:      :+:    :+:   */
+/*   ms_2dimlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 20:41:00 by yushsato          #+#    #+#             */
-/*   Updated: 2023/12/21 20:41:01 by yushsato         ###   ########.fr       */
+/*   Created: 2024/01/02 02:13:11 by yushsato          #+#    #+#             */
+/*   Updated: 2024/01/02 02:13:11 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ms_lib.h"
-
-void	ms_strsfree(char **strs)
+int	ms_2dimlen(char **str)
 {
 	int	i;
 
 	i = 0;
-	while (strs[i])
-		free(strs[i++]);
-	free(strs);
+	while (str[i])
+		i++;
+	return (i);
 }

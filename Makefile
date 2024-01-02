@@ -14,13 +14,10 @@ NAME	= minishell
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
 SRCS	= main.c \
-		  ms_lib/ms_exec.c \
-		  ms_lib/ms_lexer.c \
-		  ms_lib/ms_readline.c \
-		  ms_lib/ms_shell.c \
-		  ms_lib/ms_strsfree.c \
-		  ms_lib/ms_tokenlen.c \
-		  ms_lib/ms_tokensfree.c
+		  src/ms_2dimlen.c \
+		  src/ms_envinit.c \
+		  src/ms_siginthandler.c \
+		  src/ms_readline.c
 OBJS	= $(SRCS:.c=.o)
 RLDIR	= $(shell brew --prefix readline)
 LIBFT	= libft.a
@@ -59,7 +56,7 @@ __debug_configure__:
 debug: __debug_configure__ all
 
 norminette: $(SRCS)
-	norminette $^
+	norminette $^ minishell.h
 
 norm: norminette
 

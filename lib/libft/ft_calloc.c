@@ -28,7 +28,7 @@ void	*ft_calloc(size_t count, size_t size)
 	ptr = malloc(size * count);
 	if (ptr == NULL)
 	{
-		write(1, "-minishell: Cannot allocate memory.\n", 36);
+		write(1, "\nError: Cannot allocate memory.\n", 32);
 		exit(1);
 	}
 	if (ptr)

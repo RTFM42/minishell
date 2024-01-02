@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_readline.c                                      :+:      :+:    :+:   */
+/*   ms_envinit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 16:24:24 by yushsato          #+#    #+#             */
-/*   Updated: 2023/12/12 16:46:02 by yushsato         ###   ########.fr       */
+/*   Created: 2024/01/02 02:20:38 by yushsato          #+#    #+#             */
+/*   Updated: 2024/01/02 02:28:27 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ms_lib.h"
+#include "../minishell.h"
 
-char	*ms_readline(void)
+void	ms_envinit(char **env)
 {
-	char	*line;
+	int	i;
 
-	line = readline("minishell> ");
-	if (line == NULL)
+	i = 0;
+	g_env = ft_calloc(ms_2dimlen(env) + 1, sizeof(char *));
+	while (env[i])
 	{
-		write(1, "-minishell: Cannot allocate memory.\n", 36);
-		exit(1);
+		g_env[i] = ft_strdup(env[i]);
+		i++;
 	}
-	return (line);
 }

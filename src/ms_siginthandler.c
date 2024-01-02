@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_tokensfree.c                                    :+:      :+:    :+:   */
+/*   ms_siginthandler.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/21 20:10:43 by yushsato          #+#    #+#             */
-/*   Updated: 2023/12/21 20:10:45 by yushsato         ###   ########.fr       */
+/*   Created: 2024/01/02 02:37:14 by yushsato          #+#    #+#             */
+/*   Updated: 2024/01/02 02:40:06 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ms_lib.h"
+#include "../minishell.h"
 
-void	ms_tokensfree(t_token *token)
+void	ms_siginthandler(int signo)
 {
-	t_token	*tmp;
-
-	while (token->prev)
-		token = token->prev;
-	while (token)
+	if (signo == SIGINT)
 	{
-		tmp = token->next;
-		free(token->type);
-		free(token->value);
-		free(token);
-		token = tmp;
+		ft_printf("\nminishell> ");
+		signal(SIGINT, ms_siginthandler);
 	}
 }
