@@ -33,7 +33,7 @@ static char	*ms_strjoin(char *s1, char *s2)
 	return (ret);
 }
 
-char	*ms_readline()
+char	*ms_readline(void)
 {
 	char	*buf;
 	char	*tmp;
