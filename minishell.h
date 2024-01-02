@@ -24,7 +24,7 @@ char	**g_env;
 
 int		ms_2dimlen(char **str);
 void	ms_envinit(char **envs);
-void	ms_siginthandler(int signo);
 char	*ms_readline();
+void	ms_siginthandler(int signo);
 
 #endif
