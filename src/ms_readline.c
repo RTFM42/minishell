@@ -33,13 +33,14 @@ static char	*ms_strjoin(char *s1, char *s2)
 	return (ret);
 }
 
-char	*ms_readline(void)
+char	*ms_readline(char *str)
 {
 	char	*buf;
 	char	*tmp;
 	char	*line;
 	int		res;
 
+	ft_printf("%s", str);
 	buf = ft_calloc(2, sizeof(char));
 	line = NULL;
 	while (1)

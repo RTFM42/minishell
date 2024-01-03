@@ -22,9 +22,10 @@ int	main(int ac, char **av, char **envp)
 	ms_envinit(envp);
 	while (1)
 	{
-		ft_printf("minishell> ");
 		signal(SIGINT, ms_siginthandler);
-		input = ms_readline();
-		free(input);
+		signal(SIGQUIT, SIG_IGN);
+		input = ms_strset(input, ms_readshell("minishell> "));
+		ft_printf("res: %s\n", input);
 	}
+	free(input);
 }

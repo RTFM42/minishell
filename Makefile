@@ -16,8 +16,10 @@ CFLAGS	= -Wall -Wextra -Werror
 SRCS	= main.c \
 		  src/ms_2dimlen.c \
 		  src/ms_envinit.c \
+		  src/ms_readline.c \
+		  src/ms_readshell.c \
 		  src/ms_siginthandler.c \
-		  src/ms_readline.c
+		  src/ms_strset.c
 OBJS	= $(SRCS:.c=.o)
 RLDIR	= $(shell brew --prefix readline)
 LIBFT	= libft.a
