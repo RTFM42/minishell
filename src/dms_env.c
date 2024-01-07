@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   dms_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 16:07:56 by yushsato          #+#    #+#             */
-/*   Updated: 2024/01/05 03:54:16 by yushsato         ###   ########.fr       */
+/*   Created: 2024/01/08 07:31:44 by yushsato          #+#    #+#             */
+/*   Updated: 2024/01/08 07:36:51 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-int	main(int ac, char **av, char **envp)
+void	dms_putenv(char **envp)
 {
-	char	*line;
-	t_token	*chain;
+	int	i;
 
-	(void)ac;
-	(void)av;
-	ms_envinit(envp);
-	while (1)
-	{
-		ms_setsignal();
-		line = readline("minishell$ ");
-		ms_isctrld(line, envp);
-		chain = lxr_lexer(line);
-		dms_putchain(chain);
-		dms_putenv(envp);
-		free(line);
-		ms_token_free(chain);
-	}
-	return (0);
+	i = 0;
+	while (envp && envp[i++])
+		ft_printf("\x1b[33m%d: \x1b[44m%s\x1b[0m\n", i, envp[i - 1]);
 }

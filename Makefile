@@ -15,6 +15,7 @@ CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
 SRCS	= src/main.c \
 		  src/dms_token.c \
+		  src/dms_env.c \
 		  src/ms_env.c \
 		  src/ms_signal.c \
 		  src/ms_token.c \

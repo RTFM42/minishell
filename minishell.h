@@ -31,6 +31,7 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
+void	dms_putenv(char **chain);
 void	dms_putchain(t_token *chain);
 
 char	**ms_envadd(char *new);

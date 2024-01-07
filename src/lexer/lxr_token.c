@@ -70,6 +70,8 @@ int	lxr_token(char *str, t_token *chain)
 			i += lxr_2quote(&str[i]);
 		else if (str[i] == '\'')
 			i += lxr_1quote(&str[i]);
+		else if (!ft_memcmp(&str[i], "\\;", 2))
+			i += 2;
 		else
 			i++;
 	}
