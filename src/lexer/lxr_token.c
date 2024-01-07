@@ -51,7 +51,6 @@ static int	lxr_2quote(char *str)
 	}
 	if (str[i])
 		i++;
-	ft_printf("lxr_len: %d\n", i);
 	return (i);
 }
 
@@ -67,10 +66,7 @@ int	lxr_token(char *str, t_token *chain)
 		if (str[i] == ' ' || str[i] == '>' || str[i] == '<' || str[i] == '|')
 			break ;
 		else if (str[i] == '\"')
-		{
 			i += lxr_2quote(&str[i]);
-			ft_printf("len: %d\n", i);
-		}
 		else if (str[i] == '\'')
 			i += lxr_1quote(&str[i]);
 		else

@@ -14,11 +14,12 @@
 
 void	dms_putchain(t_token *chain)
 {
+	ft_printf("\x1b[33m----------\x1b[0m\n");
 	while (chain)
 	{
-		ft_printf("type: %s\n", chain->type);
-		ft_printf("str:  %s\n", chain->str);
-		ft_printf("----------\n");
+		ft_printf("\x1b[33mtype: \x1b[44m%s\x1b[0m\n", chain->type);
+		ft_printf("\x1b[33mstr:  \x1b[44m%s\x1b[0m\n", chain->str);
+		ft_printf("\x1b[33m----------\x1b[0m\n");
 		chain = chain->next;
 	}
 }
