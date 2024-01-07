@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_strset.c                                        :+:      :+:    :+:   */
+/*   ms_signal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/03 16:51:35 by yushsato          #+#    #+#             */
-/*   Updated: 2024/01/03 16:53:03 by yushsato         ###   ########.fr       */
+/*   Created: 2024/01/04 22:30:40 by yushsato          #+#    #+#             */
+/*   Updated: 2024/01/05 01:53:03 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../minishell.h"
 
-char	*ms_strset(char *dest, char *src)
+static void	sigint(int sig)
 {
-	if (dest != NULL)
-		free(dest);
-	dest = NULL;
-	if (src != NULL)
-		dest = ft_strdup(src);
-	return (dest);
+	(void)sig;
+	rl_on_new_line();
+	ft_printf("\n");
+	rl_replace_line("", 0);
+	rl_redisplay();
+}
+
+void	ms_setsignal(void)
+{
+	signal(SIGINT, sigint);
+	signal(SIGQUIT, SIG_IGN);
 }

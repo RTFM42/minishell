@@ -6,7 +6,7 @@
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:43:26 by yushsato          #+#    #+#             */
-/*   Updated: 2024/01/04 00:35:18 by yushsato         ###   ########.fr       */
+/*   Updated: 2024/01/05 15:24:30 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,30 @@
 # include "lib/libft/libft.h"
 # include "lib/ft_printf/ft_printf.h"
 
-/**
- * @param sstr // this param will have not encoded strring (example: "\\\"")
- * @param dstr // this param will have encoded string (example: \")
-*/
+int	g_signal;
 
 typedef struct s_token
 {
 	char			*str;
+	int				len;	
 	char			*type;
-	struct s_token	*next;
 	struct s_token	*prev;
+	struct s_token	*next;
 }	t_token;
 
-char	**g_env;
+void	dms_putchain(t_token *chain);
 
-int		ms_2dimlen(char **str);
-void	ms_envinit(char **envs);
-char	*ms_readline(char *str);
-char	*ms_readshell(char *str);
-void	ms_siginthandler(int signo);
-char	*ms_strset(char *dest, char *src);
+char	**ms_envadd(char *new);
+char	**ms_envget(void);
+char	**ms_envinit(char **envp);
+void	ms_setsignal(void);
+t_token	*ms_token_add(t_token *chain, t_token *new);
+t_token	*ms_token_free(t_token *chain);
+t_token	*ms_token_last(t_token *chain);
+t_token	*ms_token_new(char *str, int len, const char *type);
+t_token	*lxr_lexer(char *str);
+int		lxr_pipe(char *str, t_token *chain);
+int		lxr_redirect(char *str, t_token *chain);
+int		lxr_token(char *str, t_token *chain);
 
 #endif

@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   dms_token.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 16:07:56 by yushsato          #+#    #+#             */
-/*   Updated: 2024/01/02 16:25:54 by yushsato         ###   ########.fr       */
+/*   Created: 2024/01/07 16:01:16 by yushsato          #+#    #+#             */
+/*   Updated: 2024/01/07 16:04:33 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../minishell.h"
 
-int	main(int ac, char **av, char **envp)
+void	dms_putchain(t_token *chain)
 {
-	char	*input;
-
-	(void)ac;
-	(void)av;
-	input = NULL;
-	ms_envinit(envp);
-	while (1)
+	while (chain)
 	{
-		signal(SIGINT, ms_siginthandler);
-		signal(SIGQUIT, SIG_IGN);
-		input = ms_strset(input, ms_readshell("minishell> "));
-		ft_printf("res: %s\n", input);
+		ft_printf("type: %s\n", chain->type);
+		ft_printf("str:  %s\n", chain->str);
+		ft_printf("----------\n");
+		chain = chain->next;
 	}
-	free(input);
 }

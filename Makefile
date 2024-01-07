@@ -6,32 +6,34 @@
 #    By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 16:07:14 by yushsato          #+#    #+#              #
-#    Updated: 2023/12/12 17:22:05 by yushsato         ###   ########.fr        #
+#    Updated: 2024/01/05 15:22:51 by yushsato         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= minishell
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
-SRCS	= main.c \
-		  src/ms_2dimlen.c \
-		  src/ms_envinit.c \
-		  src/ms_readline.c \
-		  src/ms_readshell.c \
-		  src/ms_siginthandler.c \
-		  src/ms_strset.c
+SRCS	= src/main.c \
+		  src/dms_token.c \
+		  src/ms_env.c \
+		  src/ms_signal.c \
+		  src/ms_token.c \
+		  src/lexer/lxr_lexer.c \
+		  src/lexer/lxr_pipe.c \
+		  src/lexer/lxr_redirect.c \
+		  src/lexer/lxr_token.c
 OBJS	= $(SRCS:.c=.o)
 RLDIR	= $(shell brew --prefix readline)
 LIBFT	= libft.a
 PRINTF	= ftprintf.a
 RLFLAGS	= -lreadline -L$(RLDIR)/lib
-INCLUDE	= -I./ -I./ms_lib -I$(RLDIR)/include
+INCLUDE	= -I./ -I./src -I$(RLDIR)/include
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT) $(PRINTF)
-	$(CC) $(CFLAGS) $(RLFLAGS) $^ $(INCLUDE) -o $@
+	$(CC) $(INCLUDE) $(CFLAGS) $(RLFLAGS) $^ -o $@
 
 $(LIBFT):
 		cd lib && cd libft && make all && cp $@ ../../ && make fclean;
