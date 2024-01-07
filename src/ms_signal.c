@@ -26,3 +26,19 @@ void	ms_setsignal(void)
 	signal(SIGINT, sigint);
 	signal(SIGQUIT, SIG_IGN);
 }
+
+void	ms_isctrld(char *stdin, char **env)
+{
+	int	i;
+
+	i = 0;
+	while (ft_memcmp(env[i], "?=", 2))
+		i++;
+	if (stdin == NULL)
+	{
+		ft_printf("exit\n");
+		if (env[i] == NULL)
+			exit(0);
+		exit(ft_atoi(env[i] + 2));
+	}
+}

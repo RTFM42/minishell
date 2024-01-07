@@ -37,6 +37,7 @@ char	**ms_envadd(char *new);
 char	**ms_envget(void);
 char	**ms_envinit(char **envp);
 void	ms_setsignal(void);
+void	ms_isctrld(char *stdin, char **env);
 t_token	*ms_token_add(t_token *chain, t_token *new);
 t_token	*ms_token_free(t_token *chain);
 t_token	*ms_token_last(t_token *chain);

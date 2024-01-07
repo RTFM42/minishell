@@ -24,6 +24,7 @@ int	main(int ac, char **av, char **envp)
 	{
 		ms_setsignal();
 		line = readline("minishell$ ");
+		ms_isctrld(line, envp);
 		chain = lxr_lexer(line);
 		dms_putchain(chain);
 		free(line);
