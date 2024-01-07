@@ -32,7 +32,7 @@ void	ms_isctrld(char *stdin, char **env)
 	int	i;
 
 	i = 0;
-	while (ft_memcmp(env[i], "?=", 2))
+	while (env[i] && ft_memcmp(env[i], "?=", 2))
 		i++;
 	if (stdin == NULL)
 	{
