@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_lexer.c                                         :+:      :+:    :+:   */
+/*   lxr_semicolon.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 03:07:45 by yushsato          #+#    #+#             */
-/*   Updated: 2024/01/05 15:22:17 by yushsato         ###   ########.fr       */
+/*   Created: 2024/01/08 00:15:59 by yushsato          #+#    #+#             */
+/*   Updated: 2024/01/08 00:16:00 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-t_token	*lxr_lexer(char *str)
+int	lxr_semicolon(char *str, t_token *chain)
 {
-	t_token	*chain;
-	int		i;
-
 	if (str == NULL || *str == '\0')
-		return (NULL);
-	i = 0;
-	chain = ms_token_new(str, 0, "header");
-	while (str[i])
+		return (0);
+	if (!ft_memcmp(str, ";", 1))
 	{
-		if (str[i] == ' ')
-			i++;
-		else if (str[i] == '>' || str[i] == '<')
-			i += lxr_redirect(&str[i], chain);
-		else if (str[i] == '|')
-			i += lxr_pipe(&str[i], chain);
-		else if (str[i] == ';')
-			i += lxr_semicolon(&str[i], chain);
-		else
-			i += lxr_token(&str[i], chain);
+		ms_token_add(chain, ms_token_new(str, 1, ";"));
+		return (1);
 	}
-	return (chain);
+	return (0);
 }

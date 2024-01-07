@@ -21,6 +21,7 @@ SRCS	= src/main.c \
 		  src/lexer/lxr_lexer.c \
 		  src/lexer/lxr_pipe.c \
 		  src/lexer/lxr_redirect.c \
+		  src/lexer/lxr_semicolon.c \
 		  src/lexer/lxr_token.c
 OBJS	= $(SRCS:.c=.o)
 RLDIR	= $(shell brew --prefix readline)

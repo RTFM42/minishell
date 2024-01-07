@@ -63,7 +63,8 @@ int	lxr_token(char *str, t_token *chain)
 		return (0);
 	while (str[i])
 	{
-		if (str[i] == ' ' || str[i] == '>' || str[i] == '<' || str[i] == '|')
+		if (str[i] == ' ' || str[i] == '>' || str[i] == '<' || str[i] == '|'
+			|| str[i] == ';')
 			break ;
 		else if (str[i] == '\"')
 			i += lxr_2quote(&str[i]);

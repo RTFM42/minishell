@@ -44,6 +44,7 @@ t_token	*ms_token_new(char *str, int len, const char *type);
 t_token	*lxr_lexer(char *str);
 int		lxr_pipe(char *str, t_token *chain);
 int		lxr_redirect(char *str, t_token *chain);
+int		lxr_semicolon(char *str, t_token *chain);
 int		lxr_token(char *str, t_token *chain);
 
 #endif
