@@ -31,7 +31,7 @@ bool	isdigit_str(char *str)
 			break ;
 		i++;
 	}
-	if (str[i] == '\0' && flag == 0)// 余分な文字がなく、数字があれば true を返す
+	if (str[i] == '\0' && flag == 0) // 余分な文字がなく、数字があれば true を返す
 		return (true);
 	else
 		return (false);
@@ -52,10 +52,10 @@ bool	check_exit_args(char **argv)
 		if (isdigit_str(argv[i])
 			&& !ft_isalpha(argv[i + 1][0]))
 			return (true);
-		else if (ft_isalpha(argv[i][0]))//exit a 1 2->すぐexit
+		else if (ft_isalpha(argv[i][0])) //exit a 1 2->すぐexit
 			return (true);
 		else if (isdigit_str(argv[i])
-			&& ft_isalpha(argv[i + 1][0]))//exit 1 a s->exitできない
+			&& ft_isalpha(argv[i + 1][0])) //exit 1 a s->exitできない
 			return (false);
 		i++;
 	}
@@ -70,9 +70,9 @@ int	exit_command(char **argv)
 	i = 0;
 	// if (argv[i][0] == '-' && argv[i][1] == '-')
 	// 	break ;
-	if (argv[i + 1] || !isdigit_str(argv[i]))//現在の引数が数字の文字列でない
+	if (argv[i + 1] || !isdigit_str(argv[i])) //現在の引数が数字の文字列でない
 		exit(255);
-	else if (!check_exit_args(argv))//falseのとき
+	else if (!check_exit_args(argv)) //falseのとき
 	{
 		status = 255;
 		exit(status);
