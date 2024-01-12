@@ -30,11 +30,11 @@ int	echo_command(char **argv)
 	while (argv[i])
 	{
 		printf("%s", argv[i]);
-		if (argv[i + 1] != NULL)//次の要素があれば
+		if (argv[i + 1] != NULL) //次の要素があれば
 			printf(" ");
-	i++;
+		i++;
 	}
-	if (option_n(argv[1]) == false)//オプション無し
+	if (option_n(argv[1]) == false) //オプション無し
 		printf("\n");
 	return (EXIT_SUCCESS);
 }
