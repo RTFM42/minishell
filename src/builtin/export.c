@@ -6,12 +6,12 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/11 17:08:24 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/12 11:08:29 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtin.h"
-
+/*
 int	export_command(char **argv, t_env *env)
 {
 	size_t	i;
@@ -27,9 +27,36 @@ int	export_command(char **argv, t_env *env)
 	}
 	return (EXIT_SUCCESS);
 }
+*/
+int	export_command(char **argv, t_env *env)
+{
+	size_t	i;
+
+	i = 1;
+	while (argv[i])
+	{
+		if (env_name_judge(argv[i]) && argv[i + 1] != '=')//??????
+		{
+
+		else
+			strerror(errno);
+		i++;
+	}
+	return (EXIT_SUCCESS);
+}
+
 
 /*
+export MY_VAR="Hello World"
+export 変数名=値
+
 +=
+ex)
+export a=1
+export a+="new"
+↓
+echo $a
+1new
 
  export =
 bash: export: `=': not a valid identifier
