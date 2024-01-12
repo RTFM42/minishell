@@ -55,7 +55,7 @@ X_OK: 実行権限があるかどうかを確認するフラグ。
 
 void	check_file_permission(const char *path)
 {
-	if (access(path, F_OK) != -1)// ファイルが存在する場合
+	if (access(path, F_OK) != -1) // ファイルが存在する場合
 	{
 		if (access(path, R_OK) == 0)
 			printf("Read permission is granted.\n");
@@ -73,7 +73,6 @@ void	check_file_permission(const char *path)
 	else
 		perror("File not found");
 }
-
 
 static void	cd_home(void)
 {
@@ -131,5 +130,3 @@ int	cd_command(char **argv)
 
 // 	return 0;
 // }
-
-
