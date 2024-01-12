@@ -35,9 +35,10 @@ int	export_command(char **argv, t_env *env)
 	i = 1;
 	while (argv[i])
 	{
-		if (env_name_judge(argv[i]) && argv[i + 1] != '=')//??????
+		if (env_name_judge(argv[i]))
 		{
-
+			export_print_env(env);
+		}
 		else
 			strerror(errno);
 		i++;
