@@ -54,7 +54,10 @@ $(LIBFT):
 $(PRINTF):
 		cd lib && cd ft_printf && make all && cp $@ ../../ && make fclean;
 
-all: $(NAME)
+readline:
+	brew install readline
+
+all: readline $(NAME)
 
 clean:
 	rm -rf $(OBJS) $(LIBFT) $(PRINTF)
