@@ -18,7 +18,7 @@ t_env	*env_search(t_env *env, char *name)
 	{
 		if (ft_strcmp(env->name, name) == 0)
 			return (env);
-			env = env->next;
+		env = env->next;
 	}
 	return (NULL);
 }
@@ -94,7 +94,7 @@ t_env	*env_create(char **envp)
 // 	(void)argv;
 //     // env_command 関数を呼び出して環境変数のリストを出力
 // 	t_env	*env_list;
-	
+
 // 	env_list = env_create(envp);
 // 	unset_command(argv, env_list);
 //     env_list_print(env_list);
