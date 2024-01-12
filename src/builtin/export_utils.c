@@ -52,7 +52,7 @@ void	export_print_equal(char *str)
 
 void	export_print_env(t_env *env)
 {
-	while(env)
+	while (env)
 	{
 		printf("declare -x %s", env->name);
 		if (env->value)
