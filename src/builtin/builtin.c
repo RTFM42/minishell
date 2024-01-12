@@ -20,11 +20,11 @@ int	exec_builtin(char **argv, t_env *env)
 		return (cd_command(argv));
 	else if (ft_strcmp(argv[0], "pwd") == 0)
 		return (pwd_command());
-	else if (ft_strcmp(argv[0], "export") == 0)//*env
+	else if (ft_strcmp(argv[0], "export") == 0) //*env
 		return (export_command(argv, env));
 	else if (ft_strcmp(argv[0], "unset") == 0)
 		return (unset_command(argv, env));
-	// else if (ft_strcmp(argv[0], "env") == 0)//*env
+	// else if (ft_strcmp(argv[0], "env") == 0) //*env
 	// 	return (env_command());
 	else if (ft_strcmp(argv[0], "exit") == 0)
 		return (exit_command(argv));
