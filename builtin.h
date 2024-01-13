@@ -44,7 +44,7 @@ t_env	*env_search(t_env *env, char *name);
 void	env_list_add(t_env **env_list, char *name, char *value);
 void	env_list_print(t_env *env_list);
 t_env	*env_create(char **envp);
-t_env	*env_getptr();
+t_env	*env_store();
 
 //env_utils
 bool	env_name_judge(char *name);
