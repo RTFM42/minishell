@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:42:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 19:01:25 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 19:59:00 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,10 @@ void	env_del(t_env **env_list, char *name)
 
 // 環境変数の更新
 // 指定された名前の環境変数が存在すればその値を更新し、存在しなければ新しい環境変数として追加
-void	env_update(t_env **env_list, char *name, char *value)
+void	env_update(char *name, char *value)
 {
 	t_env	*current;
+	const t_env **env_list = env_store();
 
 	current = env_search(*env_list, name);
 	if (current)
