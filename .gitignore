@@ -1,5 +1,7 @@
 *.o
 *.a
+*.swap
+*.swo
 
 /minishell
 
