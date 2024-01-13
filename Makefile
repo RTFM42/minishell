@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 16:07:14 by yushsato          #+#    #+#              #
-#    Updated: 2024/01/13 16:46:09 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/01/13 21:20:56 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

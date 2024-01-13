@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 20:09:27 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 21:27:05 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ bashで定義した変数や関数を削除するコマンド [unset 変数名] 
 int	unset_command(char **argv)
 {
 	size_t	i;
-	const t_env	*env = *(env_store());
+	t_env	*env;
 
+	env = *(env_store());
 	i = 1;
 	while (argv[i])
 	{

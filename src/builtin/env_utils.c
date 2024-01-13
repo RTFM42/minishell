@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:42:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 19:59:00 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 21:27:29 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,9 @@ void	env_del(t_env **env_list, char *name)
 void	env_update(char *name, char *value)
 {
 	t_env	*current;
-	const t_env **env_list = env_store();
+	t_env	**env_list;
 
+	env_list = env_store();
 	current = env_search(*env_list, name);
 	if (current)
 	{
