@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 19:43:02 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 20:09:27 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int	unset_command(char **argv)
 			strerror(errno);
 		i++;
 	}
+	env_update("?", "0");
 	return (EXIT_SUCCESS);
 }
 

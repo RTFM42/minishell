@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:41 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/11 17:00:51 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 20:03:51 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ int	cd_command(char **argv)
 		cd_home();
 	if (chdir(argv[1]) != 0)
 		ft_error();
+	env_update("?", "0");
 	return (EXIT_SUCCESS);
 }
 

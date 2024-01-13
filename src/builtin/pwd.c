@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:15 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/11 17:01:21 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 20:09:15 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ int	pwd_command(void)
 	{
 		strerror(errno);
 		free(pwd);
+		env_update("?", "1");
 		return (EXIT_FAILURE);
 	}
 	free (pwd);
+	env_update("?", "0");
 	return (EXIT_SUCCESS);
 }
 

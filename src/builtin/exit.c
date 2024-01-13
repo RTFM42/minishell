@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:04 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/11 17:01:11 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 20:18:04 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,9 @@ int	exit_command(char **argv)
 {
 	size_t	i;
 	int		status;
+	t_env	*def;
 
 	i = 0;
-	// if (argv[i][0] == '-' && argv[i][1] == '-')
-	// 	break ;
 	if (argv[i + 1] || !isdigit_str(argv[i])) //現在の引数が数字の文字列でない
 		exit(255);
 	else if (!check_exit_args(argv)) //falseのとき
@@ -78,7 +77,12 @@ int	exit_command(char **argv)
 		exit(status);
 	}
 	else
-		status = ft_atoi(argv[0]) % 256;
+	{
+		def = env_search(*(env_store()), "?");
+		if (def == NULL)
+			exit(0);
+		exit(ft_atoi(def->value));
+	}
 	return (EXIT_FAILURE);
 }
 
