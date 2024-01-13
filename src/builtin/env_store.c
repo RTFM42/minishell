@@ -14,7 +14,7 @@
 
 t_env	**env_store()
 {
-	static t_env	**chain;
+	static t_env	*chain;
 	
-	return (chain);
+	return (&chain);
 }
