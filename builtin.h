@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:23:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 17:13:21 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 17:55:10 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ t_env	*env_search(t_env *env, char *name);
 void	env_list_add(t_env **env_list, char *name, char *value);
 void	env_list_print(t_env *env_list);
 t_env	*env_create(char **envp);
+t_env	*env_getptr();
 
 //env_utils
 bool	env_name_judge(char *name);
