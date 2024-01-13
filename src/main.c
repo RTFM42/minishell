@@ -49,17 +49,16 @@ int	main(int ac, char **av, char **envp)
 
 	(void)ac;
 	(void)av;
-	ms_envinit(envp);
+	env_create(envp);
 	while (1)
 	{
 		ms_setsignal();
 		line = readline("minishell$ ");
-		ms_isctrld(line, envp);
+		ms_isctrld(line);
 		chain = lxr_lexer(line);
 		if (test(chain))
 			continue ;
 		dms_putchain(chain);
-		dms_putenv(envp);
 		free(line);
 		ms_token_free(chain);
 	}
