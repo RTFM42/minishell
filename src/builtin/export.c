@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 18:54:32 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 18:59:26 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	export_command(char **argv, t_env *env)
 }
 */
 
-int	export_command(char **argv, t_env *env)
+int	export_command(char **argv)
 {
 	size_t	i;
 
@@ -38,7 +38,7 @@ int	export_command(char **argv, t_env *env)
 	{
 		if (env_name_judge(argv[i]))
 		{
-			export_print_env(env);
+			export_print_env();
 		}
 		else
 			strerror(errno);
