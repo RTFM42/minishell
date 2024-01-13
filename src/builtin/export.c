@@ -6,22 +6,42 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 22:53:01 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 23:06:54 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtin.h"
 
+static char *export_getname(char *argv)
+{
+	char	*value;
+	char	*name;
+
+	value = ft_strchr(argv, '=') + 1;
+	name = (char *)ft_calloc(value - argv + 1, 1);
+	ft_strlcpy(name, argv, value - argv);
+	return (name);
+}
+
+static char	*export_getvalue(char *argv)
+{
+	char	*value;
+
+	value = ft_strdup(ft_strchr(argv, '=') + 1);
+	return (value);
+}
 
 int	export_command(char **argv)
 {
 	size_t	i;
+	char	*name;
+	char	*value;
 
-	i = 1;
-	if (argv[i] == NULL)
+	if (ft_strcmp(argv[0], "export") == 0)
 		export_print_env();
 	while (argv[i])
 	{
+
 		if (env_name_judge(argv[i]))
 			export_print_env();
 		else
