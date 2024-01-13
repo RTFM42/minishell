@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/12 11:08:29 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 16:04:16 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int	export_command(char **argv, t_env *env)
 	return (EXIT_SUCCESS);
 }
 */
+
 int	export_command(char **argv, t_env *env)
 {
 	size_t	i;

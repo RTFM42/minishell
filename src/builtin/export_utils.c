@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 09:43:23 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/12 11:19:48 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 16:45:29 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,3 +66,20 @@ void	export_print_env(t_env *env)
 		env = env->next;
 	}
 }
+/*
+int main()
+{
+    t_env *env_list = (t_env *)malloc(sizeof(t_env));
+    env_list->name = strdup("MY_VAR");
+    env_list->value = strdup("Hello World");
+    env_list->next = NULL;
+
+    export_print_env(env_list);
+
+    free(env_list->name);
+    free(env_list->value);
+    free(env_list);
+
+    return 0;
+}
+*/

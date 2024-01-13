@@ -6,7 +6,7 @@
 #    By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 16:07:14 by yushsato          #+#    #+#              #
-#    Updated: 2024/01/11 16:57:27 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/01/13 16:46:09 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ SRCS	= ./src/main.c \
 		  ./src/lexer/lxr_semicolon.c \
 		  ./src/lexer/lxr_token.c \
 		  ./src/lexer/lxr_redirect.c \
-		  ./src/lexer/lxr_lexer.c
+		  ./src/lexer/lxr_lexer.c \
+		  ./src/lexer/lxr_pipe.c
 	
 OBJS	= $(SRCS:.c=.o)
 RLDIR	= $(shell brew --prefix readline)
