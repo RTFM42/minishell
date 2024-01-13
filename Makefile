@@ -13,29 +13,27 @@
 NAME	= minishell
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror
-SRCS	= ./src/main.c \
-		  ./src/ms_token.c \
+SRCS	= ./src/ms_token.c \
 		  ./src/ms_signal.c \
-		  ./src/dms_token.c \
-		  ./src/dms_env.c \
-		  ./src/dms_lxrtochar2.c \
-		  ./src/builtin/echo.c \
-		  ./src/builtin/pwd.c \
-		  ./src/builtin/env_store.c \
-		  ./src/builtin/env.c \
-		  ./src/builtin/export_utils.c \
-		  ./src/builtin/env_utils.c \
-		  ./src/builtin/exit.c \
-		  ./src/builtin/builtin.c \
-		  ./src/builtin/built_utils.c \
-		  ./src/builtin/cd.c \
-		  ./src/builtin/unset.c \
-		  ./src/builtin/export.c \
-		  ./src/lexer/lxr_semicolon.c \
+		  ./src/main.c \
 		  ./src/lexer/lxr_token.c \
+		  ./src/lexer/lxr_semicolon.c \
 		  ./src/lexer/lxr_redirect.c \
 		  ./src/lexer/lxr_lexer.c \
-		  ./src/lexer/lxr_pipe.c
+		  ./src/dms_token.c \
+		  ./src/dms_lxrtochar2.c \
+		  ./src/dms_env.c \
+		  ./src/builtin/pwd.c \
+		  ./src/builtin/export_utils.c \
+		  ./src/builtin/export.c \
+		  ./src/builtin/exit.c \
+		  ./src/builtin/env_utils.c \
+		  ./src/builtin/env_store.c \
+		  ./src/builtin/env.c \
+		  ./src/builtin/echo.c \
+		  ./src/builtin/cd.c \
+		  ./src/builtin/builtin.c \
+		  ./src/builtin/built_utils.c
 	
 OBJS	= $(SRCS:.c=.o)
 RLDIR	= $(shell brew --prefix readline)
