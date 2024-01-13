@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:23:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 16:04:55 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 17:13:21 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	env_update(t_env **env_list, char *name, char *value);
 t_env	*lstlast(t_env *lst);
 
 //export
+bool    check_plus_equal(char *str);
+void    export_print_env(t_env *env);
 void    export_print_env(t_env *env);
 
 //utils
