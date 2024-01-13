@@ -26,16 +26,20 @@ static int	freestrs(char **strs)
 
 static int	test(t_token *chain)
 {
+	int		ret;
 	char	**strs;
+
 	if (chain == NULL || ft_memcmp(chain->type, "header", 6))
 		return (0);
-	if (chain->next != NULL && ft_memcmp(chain->next->str, "export", 6))
+	strs = dms_lxrtochar2(chain);
+	ret = 0;
+	if (ft_memcmp(strs[0], "export", 6) == 0)
 	{
-		strs = dms_lxrtochar2(chain);
-		freestrs(strs);
-		return (1);
+		ret = 1;
+		export_command(strs);
 	}
-	return (0);
+	freestrs(strs);
+	return (ret);
 }
 
 int	main(int ac, char **av, char **envp)
@@ -52,6 +56,8 @@ int	main(int ac, char **av, char **envp)
 		line = readline("minishell$ ");
 		ms_isctrld(line, envp);
 		chain = lxr_lexer(line);
+		if (test(chain))
+			continue ;
 		dms_putchain(chain);
 		dms_putenv(envp);
 		free(line);

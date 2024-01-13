@@ -34,6 +34,7 @@ char	**dms_lxrtochar2(t_token *chain)
 		return (0);
 	chain = chain->next;
 	ary = (char **)ft_calloc(chainlen(chain) + 1, sizeof(char *));
+	i = 0;
 	while (chain)
 	{
 		ary[i++] = ft_strdup(chain->str);
