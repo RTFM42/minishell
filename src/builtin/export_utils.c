@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 09:43:23 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 18:57:43 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 21:42:39 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,3 @@ void	export_print_env()
 		env = env->next;
 	}
 }
-

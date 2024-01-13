@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 21:40:07 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 22:07:25 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	export_command(char **argv)
 	}
 	printf("(%s)[%d]%zu\n", __func__, __LINE__, i);
 	env_update("?", "0");
-	return (EXIT_SUCCESS);
+	printf("(%s)[%d]%zu\n", __func__, __LINE__, i);
+	return (0);
 }
 
 

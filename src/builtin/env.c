@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:59 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 21:35:24 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 22:09:51 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_env	*env_search(t_env *env, char *name)
 {
 	while (env)
 	{
-		if (ft_strcmp(env->name, name) == 0)
+		if (env->name && ft_strcmp(env->name, name) == 0)
 			return (env);
 		env = env->next;
 	}
@@ -87,7 +87,7 @@ int	env_command(void)
 		env = env->next;
 	while (env && env->name)
 	{
-		printf("%s=%s", env->name, env->value);
+		printf("%s=%s\n", env->name, env->value);
 		env = env->next;
 	}
 	env_update("?", "0");

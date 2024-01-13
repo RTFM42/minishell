@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:42:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 21:27:29 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 22:05:56 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,9 @@ void	env_update(char *name, char *value)
 	env_list = env_store();
 	current = env_search(*env_list, name);
 	if (current)
-	{
-		free(current->value);
 		current->value = ft_strdup(value);
-	}
 	else
-		env_list_add(env_list, current->name, current->value);
+		env_list_add(env_list, name, value);
 }
 
 t_env	*lstlast(t_env *lst)
