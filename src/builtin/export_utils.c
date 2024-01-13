@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42tokyo.>       +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 09:43:23 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 17:13:13 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 18:57:43 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,11 @@ void	export_print_equal(char *str)
 	}
 	ft_putchar_fd('"', 1);
 }
-
-void	export_print_env(t_env *env)
+//envsortascii
+void	export_print_env()
 {
+	const t_env	*env = *(env_store());
+
 	while (env)
 	{
 		printf("declare -x %s", env->name);

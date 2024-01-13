@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: N <nsakanou@student.42tokyo.jp>            +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:59 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/11 17:00:56 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 18:49:51 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ t_env	*env_create(char **envp)
 		name = NULL;
 		i++;
 	}
+	*(env_store()) = env_list;
 	return (env_list);
 }
 

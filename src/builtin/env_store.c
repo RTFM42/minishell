@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env_store.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:50:07 by yushsato          #+#    #+#             */
-/*   Updated: 2024/01/13 18:01:10 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 18:57:52 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 t_env	**env_store()
 {
 	static t_env	*chain;
-	
+
 	return (&chain);
 }
