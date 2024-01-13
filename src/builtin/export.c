@@ -12,20 +12,50 @@
 
 #include "../../builtin.h"
 
+static char *export_getname(char *argv)
+{
+	char	*value;
+	char	*name;
+
+	value = ft_strchr(argv, '=') + 1;
+	name = (char *)ft_calloc(value - argv + 1, 1);
+	ft_strlcpy(name, argv, value - argv);
+	return (name);
+}
+
+static char	*export_getvalue(char *argv)
+{
+	char	*value;
+
+	value = ft_strdup(ft_strchr(argv, '=') + 1);
+	return (value);
+}
+
 int	export_command(char **argv)
 {
 	size_t	i;
+	char	*name;
+	char	*value;
 
-	if (ft_strcmp(argv[0], "export") == 0)
+	if (ft_strcmp(argv[0], "export") == 0 && argv[1] == NULL)
 		export_print_env();
 	i = 1;
 	while (argv[i])
 	{
-
-		if (env_name_judge(argv[i]))
-			export_print_env();
-		else
-			strerror(errno);
+		printf("loop\n");
+		name = export_getname(argv[i]);
+		if (env_name_judge(name))
+		{
+			printf("if\n");
+			value = export_getvalue(argv[i]);
+			env_list_add(env_store(), name, value);
+			free(name);
+			free(value);
+			i++;
+			continue ;
+		}
+		free(name);
+		strerror(errno);
 		i++;
 	}
 	env_update("?", "0");
