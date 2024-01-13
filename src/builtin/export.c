@@ -6,22 +6,22 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 22:30:29 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 22:53:01 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtin.h"
 
+
 int	export_command(char **argv)
 {
 	size_t	i;
 
-	if (ft_strcmp(argv[0], "export") == 0)
-		export_print_env();
 	i = 1;
+	if (argv[i] == NULL)
+		export_print_env();
 	while (argv[i])
 	{
-
 		if (env_name_judge(argv[i]))
 			export_print_env();
 		else

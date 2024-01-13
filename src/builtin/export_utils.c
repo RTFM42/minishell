@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 09:43:23 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 22:32:42 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 22:50:53 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,6 @@ bool	check_plus_equal(char *str)
 		return (false);
 }
 
-void	export_print_equal(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] != '=')
-			ft_putchar_fd(str[i], 1);
-		else if (str[i] == '=')
-		{
-			ft_putchar_fd(str[i], 1);
-			ft_putchar_fd('"', 1);
-		}
-		i++;
-	}
-	ft_putchar_fd('"', 1);
-}
 
 //envsortascii
 void	export_print_env()
