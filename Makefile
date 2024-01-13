@@ -22,6 +22,7 @@ SRCS	= ./src/main.c \
 		  ./src/dms_env.c \
 		  ./src/builtin/echo.c \
 		  ./src/builtin/pwd.c \
+		  ./src/builtin/env_store.c \
 		  ./src/builtin/env.c \
 		  ./src/builtin/export_utils.c \
 		  ./src/builtin/env_utils.c \
