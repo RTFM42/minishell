@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:59 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 22:09:51 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 22:14:32 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,22 +93,3 @@ int	env_command(void)
 	env_update("?", "0");
 	return (EXIT_SUCCESS);
 }
-
-// #include <stdio.h>
-
-// int main(int argc, char *argv[], char *envp[])
-// {
-// 	(void)argc;
-// 	(void)argv;
-//     // env_command 関数を呼び出して環境変数のリストを出力
-// 	t_env	*env_list;
-
-// 	env_list = env_create(envp);
-// 	unset_command(argv, env_list);
-//     env_list_print(env_list);
-
-//     return 0;
-// }
-
-//envpをリストに入れる（create_env）
-//第三引数でenvpが渡される
