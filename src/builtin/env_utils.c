@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:42:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/12 10:22:11 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 16:52:48 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ t_env	*lstlast(t_env *lst)
 	int	i;
 
 	i = 0;
+	(void)i;
 	while (lst && lst->next)
 	{
 		i++;
