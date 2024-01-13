@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:59 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 21:19:21 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 21:35:24 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,9 @@ void	env_list_print(t_env *env_list)
 
 int	env_command(void)
 {
-	int		i;
 	t_env	*env;
 
 	env = *(env_store());
-	i = 0;
 	if (env != NULL)
 		env = env->next;
 	while (env && env->name)

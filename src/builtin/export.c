@@ -6,33 +6,18 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 21:30:36 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 21:37:58 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtin.h"
-/*
-int	export_command(char **argv, t_env *env)
-{
-	size_t	i;
-
-	i = 1;
-	while (argv[i])
-	{
-		if (env_name_judge(argv[i]) == true)
-			env_update(&env, env->name, env->value);
-		else
-			strerror(errno);
-		i++;
-	}
-	return (EXIT_SUCCESS);
-}
-*/
 
 int	export_command(char **argv)
 {
 	size_t	i;
 
+	if (ft_strcmp(argv[0], "export") == 0)
+		export_print_env();
 	i = 1;
 	while (argv[i])
 	{
