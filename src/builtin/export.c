@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 22:07:25 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 22:30:29 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,14 @@ int	export_command(char **argv)
 	i = 1;
 	while (argv[i])
 	{
-		printf("(%s)[%d]%zu\n", __func__, __LINE__, i);
+
 		if (env_name_judge(argv[i]))
-		{
-			printf("(%s)[%d]%zu\n", __func__, __LINE__, i);
 			export_print_env();
-		}
 		else
 			strerror(errno);
 		i++;
 	}
-	printf("(%s)[%d]%zu\n", __func__, __LINE__, i);
 	env_update("?", "0");
-	printf("(%s)[%d]%zu\n", __func__, __LINE__, i);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 16:07:14 by yushsato          #+#    #+#              #
-#    Updated: 2024/01/13 21:40:23 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/01/13 22:21:21 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,10 @@ SRCS	= ./src/ms_token.c \
 		  ./src/builtin/env.c \
 		  ./src/builtin/echo.c \
 		  ./src/builtin/cd.c \
+		  ./src/builtin/unset.c \
 		  ./src/builtin/builtin.c \
 		  ./src/builtin/built_utils.c
-	
+
 OBJS	= $(SRCS:.c=.o)
 RLDIR	= $(shell brew --prefix readline)
 LIBFT	= libft.a
