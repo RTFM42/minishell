@@ -25,7 +25,7 @@ static int	chainlen(t_token *chain)
 	return (i);
 }
 
-int	dms_lxrtochar2(t_token *chain)
+char	**dms_lxrtochar2(t_token *chain)
 {
 	char	**ary;
 	int		i;

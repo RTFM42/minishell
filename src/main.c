@@ -11,6 +11,32 @@
 /* ************************************************************************** */
 
 #include "../minishell.h"
+#include "../builtin.h"
+
+static int	freestrs(char **strs)
+{
+	int	i;
+
+	i = 0;
+	while (strs[i])
+		free(strs[i++]);
+	free(strs);
+	return (0);
+}
+
+static int	test(t_token *chain)
+{
+	char	**strs;
+	if (chain == NULL || ft_memcmp(chain->type, "header", 6))
+		return (0);
+	if (chain->next != NULL && ft_memcmp(chain->next->str, "export", 6))
+	{
+		strs = dms_lxrtochar2(chain);
+		freestrs(strs);
+		return (1);
+	}
+	return (0);
+}
 
 int	main(int ac, char **av, char **envp)
 {
