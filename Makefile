@@ -6,7 +6,7 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 16:07:14 by yushsato          #+#    #+#              #
-#    Updated: 2024/01/13 21:38:35 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/01/13 21:40:23 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ SRCS	= ./src/ms_token.c \
 		  ./src/lexer/lxr_semicolon.c \
 		  ./src/lexer/lxr_redirect.c \
 		  ./src/lexer/lxr_lexer.c \
-		  ./src/lexer/lxr_pipe.c \
 		  ./src/dms_token.c \
 		  ./src/dms_lxrtochar2.c \
 		  ./src/dms_env.c \
