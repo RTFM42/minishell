@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:23:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 19:45:07 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 20:05:11 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		exec_builtin(char **argv);
 //command
 int		echo_command(char **argv);
 int		pwd_command(void);
-int		unset_command(char **argv, t_env *env);
+int		unset_command(char **argv);
 int		exit_command(char **argv);
 int		cd_command(char **argv);
 int		export_command(char **argv);
@@ -50,7 +50,7 @@ t_env	**env_store();
 //env_utils
 bool	env_name_judge(char *name);
 void	env_del(t_env **env_list, char *name);
-void	env_update(t_env **env_list, char *name, char *value);
+void	env_update(char *name, char *value);
 t_env	*lstlast(t_env *lst);
 
 //export
