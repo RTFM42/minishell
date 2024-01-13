@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:59 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 18:49:51 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/13 19:39:38 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,6 @@ void	env_list_add(t_env **env_list, char *name, char *value)
 	}
 }
 
-//与えられた環境変数リスト全体を出力
-void	env_list_print(t_env *env_list)
-{
-	while (env_list)
-	{
-		printf("%s=%s\n", env_list->name, env_list->value);
-		env_list = env_list->next;
-	}
-}
-
-int	env_command(void)//????????????????????
-{
-	t_env	*env_list;
-
-	env_list = NULL;
-	env_list_print(env_list);
-	return (EXIT_SUCCESS);
-}
-
 t_env	*env_create(char **envp)
 {
 	char	*value;
@@ -85,6 +66,33 @@ t_env	*env_create(char **envp)
 	}
 	*(env_store()) = env_list;
 	return (env_list);
+}
+
+//与えられた環境変数リスト全体を出力
+void	env_list_print(t_env *env_list)
+{
+	while (env_list)
+	{
+		printf("%s=%s\n", env_list->name, env_list->value);
+		env_list = env_list->next;
+	}
+}
+
+int	env_command(void)
+{
+	int		i;
+	t_env	*env;
+
+	env = *(env_store());
+	i = 0;
+	if (env != NULL)
+		env = env->next;
+	while (env && env->name)
+	{
+		ft_printf("%s=%s", i++, env->name, env->value);
+		env = env->next;
+	}
+	return (0);
 }
 
 // #include <stdio.h>
