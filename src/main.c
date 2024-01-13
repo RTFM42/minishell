@@ -33,11 +33,8 @@ static int	test(t_token *chain)
 		return (0);
 	strs = dms_lxrtochar2(chain);
 	ret = 0;
-	if (ft_memcmp(strs[0], "export", 6) == 0)
-	{
-		ret = 1;
-		export_command(strs);
-	}
+	if (exec_builtin(strs) != 256)
+		ret++;
 	freestrs(strs);
 	return (ret);
 }
