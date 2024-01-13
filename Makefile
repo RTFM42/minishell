@@ -16,6 +16,7 @@ CFLAGS	= -Wall -Wextra -Werror
 SRCS	= ./src/ms_token.c \
 		  ./src/ms_signal.c \
 		  ./src/main.c \
+		  ./src/lexer/lxr_pipe.c \
 		  ./src/lexer/lxr_token.c \
 		  ./src/lexer/lxr_semicolon.c \
 		  ./src/lexer/lxr_redirect.c \
