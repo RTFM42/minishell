@@ -33,6 +33,7 @@ typedef struct s_token
 }	t_token;
 
 void	dms_putchain(t_token *chain);
+void	dms_putenv();
 char	**dms_lxrtochar2(t_token *chain);
 
 void	ms_setsignal(void);

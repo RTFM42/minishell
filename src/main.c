@@ -6,7 +6,7 @@
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:07:56 by yushsato          #+#    #+#             */
-/*   Updated: 2024/01/05 03:54:16 by yushsato         ###   ########.fr       */
+/*   Updated: 2024/01/13 19:20:01 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	main(int ac, char **av, char **envp)
 		if (test(chain))
 			continue ;
 		dms_putchain(chain);
+		dms_putenv();
 		free(line);
 		ms_token_free(chain);
 	}

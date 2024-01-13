@@ -17,6 +17,7 @@ SRCS	= ./src/main.c \
 		  ./src/ms_token.c \
 		  ./src/ms_signal.c \
 		  ./src/dms_token.c \
+		  ./src/dms_env.c \
 		  ./src/dms_lxrtochar2.c \
 		  ./src/builtin/echo.c \
 		  ./src/builtin/pwd.c \
