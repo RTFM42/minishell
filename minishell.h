@@ -6,7 +6,7 @@
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:43:26 by yushsato          #+#    #+#             */
-/*   Updated: 2024/01/05 15:24:30 by yushsato         ###   ########.fr       */
+/*   Updated: 2024/01/15 09:17:30 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_token
 }	t_token;
 
 void	dms_putchain(t_token *chain);
-void	dms_putenv();
+void	dms_putenv(void);
 char	**dms_lxrtochar2(t_token *chain);
 
 void	ms_setsignal(void);
