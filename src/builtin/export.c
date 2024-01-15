@@ -6,13 +6,13 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 23:06:54 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:33:41 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtin.h"
 
-static char *export_getname(char *argv)
+static char	*export_getname(char *argv)
 {
 	char	*value;
 	char	*name;
@@ -42,11 +42,9 @@ int	export_command(char **argv)
 	i = 1;
 	while (argv[i])
 	{
-		printf("loop\n");
 		name = export_getname(argv[i]);
 		if (env_name_judge(name))
 		{
-			printf("if\n");
 			value = export_getvalue(argv[i]);
 			env_list_add(env_store(), name, value);
 			free(name);
@@ -61,7 +59,6 @@ int	export_command(char **argv)
 	env_update("?", "0");
 	return (0);
 }
-
 
 /*
 export MY_VAR="Hello World"

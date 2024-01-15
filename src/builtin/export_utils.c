@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 09:43:23 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 22:50:53 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:49:39 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ bool	check_plus_equal(char *str)
 		return (false);
 }
 
-
 //envsortascii
 void	export_print_env()
 {
@@ -39,9 +38,9 @@ void	export_print_env()
 
 	while (env)
 	{
-		if (env->name && env->value)
+		if (env->name && env->value && *env->name != 63)
 			printf("declare -x %s=%s\n", env->name, env->value);
-		else if (env->name)
+		else if (env->name && *env->name != 63)
 			printf("declare -x %s\n", env->name);
 		env = env->next;
 	}
