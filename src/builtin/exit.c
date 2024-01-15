@@ -6,12 +6,12 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:04 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 20:18:04 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:14:05 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtin.h"
-//+,-も含めて判定、空白もスキップしてる
+
 bool	isdigit_str(char *str)
 {
 	size_t	i;
@@ -31,13 +31,12 @@ bool	isdigit_str(char *str)
 			break ;
 		i++;
 	}
-	if (str[i] == '\0' && flag == 0) // 余分な文字がなく、数字があれば true を返す
+	if (str[i] == '\0' && flag == 0)
 		return (true);
 	else
 		return (false);
 }
 
-//exitできない場合->false, exitできる場合->true
 bool	check_exit_args(char **argv)
 {
 	size_t	i;
@@ -52,10 +51,10 @@ bool	check_exit_args(char **argv)
 		if (isdigit_str(argv[i])
 			&& !ft_isalpha(argv[i + 1][0]))
 			return (true);
-		else if (ft_isalpha(argv[i][0])) //exit a 1 2->すぐexit
+		else if (ft_isalpha(argv[i][0]))
 			return (true);
 		else if (isdigit_str(argv[i])
-			&& ft_isalpha(argv[i + 1][0])) //exit 1 a s->exitできない
+			&& ft_isalpha(argv[i + 1][0]))
 			return (false);
 		i++;
 	}
@@ -69,9 +68,9 @@ int	exit_command(char **argv)
 	t_env	*def;
 
 	i = 0;
-	if (argv[i + 1] || !isdigit_str(argv[i])) //現在の引数が数字の文字列でない
+	if (argv[i + 1] || !isdigit_str(argv[i]))
 		exit(255);
-	else if (!check_exit_args(argv)) //falseのとき
+	else if (!check_exit_args(argv))
 	{
 		status = 255;
 		exit(status);
@@ -144,32 +143,3 @@ bash: syntax error near unexpected token `newline'
 bash-3.2$ echo $?
 258
 */
-
-// #include <stdio.h>
-// #include <stdlib.h>
-// # include <stdbool.h>
-// # include <string.h>
-// # include <stdio.h>
-// # include <stdlib.h>
-// # include <unistd.h>
-// # include <limits.h>
-// # include <errno.h>
-// # include <ctype.h>
-// # include "libft.h"
-
-// extern int exit_command(char **argv);
-
-// int main(int argc, char **argv)
-// {
-//     if (argc < 2)
-//     {
-//         fprintf(stderr, "Usage: %s <exit_code>\n", argv[0]);
-//         return 1;
-
-//     char *exit_argv[] = {argv[0], argv[1], NULL};
-//     exit_command(exit_argv);
-
-//     printf("This line will not be reached if exit_command works correctly.\n");
-// 	}
-// 	return 0;
-// }

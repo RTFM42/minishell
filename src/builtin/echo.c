@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:50 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 20:03:10 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:11:29 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ int	echo_command(char **argv)
 	while (argv[i])
 	{
 		printf("%s", argv[i]);
-		if (argv[i + 1] != NULL) //次の要素があれば
+		if (argv[i + 1] != NULL)
 			printf(" ");
 		i++;
 	}
-	if (option_n(argv[1]) == false) //オプション無し
+	if (option_n(argv[1]) == false)
 		printf("\n");
 	env_update("?", "0");
 	return (EXIT_SUCCESS);

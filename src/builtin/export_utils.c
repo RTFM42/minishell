@@ -6,13 +6,13 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 09:43:23 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/15 18:09:37 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:14:51 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtin.h"
-//envsortascii
-void	export_print_env()
+
+void	export_print_env(void)
 {
 	const t_env	*env = *(env_store());
 
@@ -25,6 +25,8 @@ void	export_print_env()
 		env = env->next;
 	}
 }
+
+//envsortasciiする
 
 // bool	check_plus_equal(char *str)
 // {

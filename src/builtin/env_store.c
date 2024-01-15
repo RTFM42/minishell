@@ -6,13 +6,13 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:50:07 by yushsato          #+#    #+#             */
-/*   Updated: 2024/01/13 18:57:52 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:12:34 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtin.h"
 
-t_env	**env_store()
+t_env	**env_store(void)
 {
 	static t_env	*chain;
 
