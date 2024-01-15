@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 16:07:14 by yushsato          #+#    #+#              #
-#    Updated: 2024/01/13 22:21:21 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/01/15 09:57:45 by yushsato         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,20 +41,28 @@ OBJS	= $(SRCS:.c=.o)
 RLDIR	= $(shell brew --prefix readline)
 LIBFT	= libft.a
 PRINTF	= ftprintf.a
-RLFLAGS	= -lreadline -L$(RLDIR)/lib
+RLFLAGS	=  -L$(RLDIR)/lib -lreadline
 INCLUDE	= -I./ -I./src -I$(RLDIR)/include
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIBFT) $(PRINTF)
-	$(CC) $(INCLUDE) $(CFLAGS) $(RLFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@ $(INCLUDE) $(RLFLAGS)
 
 $(LIBFT):
-		cd lib && cd libft && make all && cp $@ ../../ && make fclean;
+		cd lib          && \
+		cd libft        && \
+		make all        && \
+		cp $@ ../../    && \
+		make fclean
 
 $(PRINTF):
-		cd lib && cd ft_printf && make all && cp $@ ../../ && make fclean;
+		cd lib          && \
+		cd ft_printf    && \
+		make all        && \
+		cp $@ ../../    && \
+		make fclean
 
 readline:
 	brew install readline

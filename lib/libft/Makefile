@@ -6,7 +6,7 @@
 #    By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/12 20:21:50 by yushsato          #+#    #+#              #
-#    Updated: 2023/11/07 17:21:24 by yushsato         ###   ########.fr        #
+#    Updated: 2024/01/15 09:43:10 by yushsato         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 %.o: %.c $(INCL)
-	$(CC) $(CFLG) -c $< -o $@ -I$(INCL)
+	$(CC) $(CFLG) -c $< -o $@ -I./
 
 clean:
 	rm -rf $(OBJS) $(BOBJS)
