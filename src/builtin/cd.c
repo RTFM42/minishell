@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:41 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/15 18:12:05 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:27:13 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,6 @@ int	change_current_dir(const char *path)
 	free(cur_dir);
 	return (EXIT_SUCCESS);
 }
-
-// argv[0]: cd 
-// argv[1]: path
-// argv[2]: その他
 
 int	cd_command(char **argv)
 {

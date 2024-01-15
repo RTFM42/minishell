@@ -6,12 +6,12 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:59 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 22:14:32 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:23:53 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtin.h"
-//指定された名前の環境変数を検索
+
 t_env	*env_search(t_env *env, char *name)
 {
 	while (env)
@@ -66,16 +66,6 @@ t_env	*env_create(char **envp)
 	}
 	*(env_store()) = env_list;
 	return (env_list);
-}
-
-//与えられた環境変数リスト全体を出力
-void	env_list_print(t_env *env_list)
-{
-	while (env_list)
-	{
-		printf("%s=%s\n", env_list->name, env_list->value);
-		env_list = env_list->next;
-	}
 }
 
 int	env_command(void)

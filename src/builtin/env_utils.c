@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:42:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 22:05:56 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:24:06 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ bool	env_name_judge(char *name)
 	return (true);
 }
 
-// 環境変数の削除
 void	env_del(t_env **env_list, char *name)
 {
 	t_env	*prev;
@@ -56,8 +55,6 @@ void	env_del(t_env **env_list, char *name)
 	return ;
 }
 
-// 環境変数の更新
-// 指定された名前の環境変数が存在すればその値を更新し、存在しなければ新しい環境変数として追加
 void	env_update(char *name, char *value)
 {
 	t_env	*current;
