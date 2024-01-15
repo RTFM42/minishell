@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:15 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/13 20:09:15 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:07:48 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	pwd_command(void)
 {
 	char	*pwd;
 
-	pwd = ft_calloc(1, PATH_MAX);//mallocしなくてもいいらしい
+	pwd = ft_calloc(1, PATH_MAX);
 	if (getcwd(pwd, PATH_MAX) != NULL)
 		printf("%s\n", pwd);
 	else

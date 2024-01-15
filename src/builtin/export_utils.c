@@ -6,31 +6,11 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 09:43:23 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/15 17:49:39 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:09:37 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtin.h"
-
-bool	check_plus_equal(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (ft_strnstr(str, "+=", ft_strlen(str)))
-	{
-		while (str[i] != '+')
-		{
-			if (str[i] == '=')
-				return (false);
-			i++;
-		}
-		return (true);
-	}
-	else
-		return (false);
-}
-
 //envsortascii
 void	export_print_env()
 {
@@ -45,3 +25,22 @@ void	export_print_env()
 		env = env->next;
 	}
 }
+
+// bool	check_plus_equal(char *str)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	if (ft_strnstr(str, "+=", ft_strlen(str)))
+// 	{
+// 		while (str[i] != '+')
+// 		{
+// 			if (str[i] == '=')
+// 				return (false);
+// 			i++;
+// 		}
+// 		return (true);
+// 	}
+// 	else
+// 		return (false);
+// }
