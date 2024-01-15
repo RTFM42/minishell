@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yushsato <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 15:54:04 by yushsato          #+#    #+#             */
-/*   Updated: 2023/11/06 19:09:33 by yushsato         ###   ########.fr       */
+/*   Updated: 2024/01/15 09:43:48 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stddef.h>
+# include <stdint.h>
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
