@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:23:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/15 20:09:31 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/16 21:52:51 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	env_update(char *name, char *value);
 t_env	*lstlast(t_env *lst);
 
 //export
-void	export_print_env(void);
+void	export_putenvs(t_env *env);
 
 //utils
 void	ft_error(void);

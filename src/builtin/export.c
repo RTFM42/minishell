@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/15 18:02:54 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/16 21:52:25 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static t_env	*export_putenv(t_env *env)
 	return (env);
 }
 
-static void	export_putenvs(t_env *env)
+void	export_putenvs(t_env *env)
 {
 	t_env	*copy;
 	t_env	*prev;
@@ -84,16 +84,6 @@ static void	export_putenvs(t_env *env)
 	while (copy && ft_memcpy(&prev, &copy, sizeof(void *))
 		&& ft_memcpy(&copy, &copy->next, sizeof(void *)))
 		free(prev);
-}
-
-int	export_command(char **argv)
-{
-	t_env	*env;
-
-	env = (*env_store())->next;
-	if (argv[1] == NULL)
-		export_putenvs(env);
-	return (0);
 }
 
 /*

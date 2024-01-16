@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 16:07:14 by yushsato          #+#    #+#              #
-#    Updated: 2024/01/15 09:57:45 by yushsato         ###   ########.fr        #
+#    Updated: 2024/01/16 21:51:10 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ SRCS	= ./src/ms_token.c \
 		  ./src/dms_lxrtochar2.c \
 		  ./src/dms_env.c \
 		  ./src/builtin/pwd.c \
-		  ./src/builtin/export_utils.c \
 		  ./src/builtin/export.c \
+		  ./src/builtin/export_utils.c \
 		  ./src/builtin/exit.c \
 		  ./src/builtin/env_utils.c \
 		  ./src/builtin/env_store.c \
