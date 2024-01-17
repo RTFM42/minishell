@@ -50,8 +50,7 @@ static t_env	*export_swap(t_env *env)
 
 static t_env	*export_putenv(t_env *env)
 {
-	if (env->value && (ft_isalpha(env->name[0]) || env->name[0] == '_')
-		&& !(env->name[0] == '_' && env->name[1] == '\0'))
+	if (env->value && (ft_isalpha(env->name[0]) || env->name[0] == '_'))
 		ft_printf("declare -x %s=\"%s\"\n", env->name, env->value);
 	else
 		ft_printf("declare -x %s\n", env->name);
