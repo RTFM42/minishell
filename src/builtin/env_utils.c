@@ -17,7 +17,7 @@ bool	env_name_judge(char *name)
 	size_t	i;
 
 	i = 0;
-	if (!ft_isalpha(name[i]) && name[i] != '_')
+	if (!(ft_isalpha(name[i]) || name[i] == '_'))
 		return (false);
 	i++;
 	while (name[i] && !((name[i] == '=') || \
