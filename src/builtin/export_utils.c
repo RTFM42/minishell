@@ -96,7 +96,7 @@ int	export_command(char **argv)
 		value = export_getvalue(argv[i]);
 		if (name == NULL)
 			ret = 1;
-		if (check_type(argv[i]) == '=')
+		else if (check_type(argv[i]) == '=')
 		{
 			env = env_search(env, name);
 			if (env == NULL)
