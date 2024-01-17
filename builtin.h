@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:23:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/17 17:28:08 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/17 21:37:46 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define BUILTIN_H
 # define DEBUG() printf("[%s](%d)\n", __func__, __LINE__)
 
+# include "lib/ft_eprintf/ft_eprintf.h"
 # include "lib/libft/libft.h"
 # include <stdbool.h>
 # include <string.h>

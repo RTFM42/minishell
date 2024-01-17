@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:43:26 by yushsato          #+#    #+#             */
-/*   Updated: 2024/01/15 09:17:30 by yushsato         ###   ########.fr       */
+/*   Updated: 2024/01/17 21:33:25 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <readline/history.h>
 # include "lib/libft/libft.h"
 # include "lib/ft_printf/ft_printf.h"
+# include "lib/ft_eprintf/ft_eprintf.h"
 
 int	g_signal;
 

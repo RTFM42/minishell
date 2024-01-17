@@ -6,7 +6,7 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 16:07:14 by yushsato          #+#    #+#              #
-#    Updated: 2024/01/17 15:21:05 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/01/17 21:36:39 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,13 +42,14 @@ OBJS	= $(SRCS:.c=.o)
 RLDIR	= $(shell brew --prefix readline)
 LIBFT	= libft.a
 PRINTF	= ftprintf.a
+EPRINTF	= fteprintf.a
 RLFLAGS	=  -L$(RLDIR)/lib -lreadline
 INCLUDE	= -I./ -I./src -I$(RLDIR)/include
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-$(NAME): $(OBJS) $(LIBFT) $(PRINTF)
+$(NAME): $(OBJS) $(LIBFT) $(PRINTF) $(EPRINTF)
 	$(CC) $(CFLAGS) $^ -o $@ $(INCLUDE) $(RLFLAGS)
 
 $(LIBFT):
@@ -65,13 +66,20 @@ $(PRINTF):
 		cp $@ ../../    && \
 		make fclean
 
+$(EPRINTF):
+		cd lib          && \
+		cd ft_eprintf    && \
+		make all        && \
+		cp $@ ../../    && \
+		make fclean
+
 readline:
 	brew install readline
 
 all: readline $(NAME)
 
 clean:
-	rm -rf $(OBJS) $(LIBFT) $(PRINTF)
+	rm -rf $(OBJS) $(LIBFT) $(PRINTF) $(EPRINTF)
 
 fclean: clean
 	rm -f $(NAME)
