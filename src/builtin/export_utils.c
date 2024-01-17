@@ -26,7 +26,7 @@ static char	*export_getname(char *argv)
 		{
 			DEBUG();
 			ft_eprintf("not a valid identifier\n");
-			break ;
+			return (NULL);
 		}
 		if (argv[i] == '=')
 		{
@@ -83,8 +83,10 @@ int	export_command(char **argv)
 	char	*name;
 	char	*value;
 	char	*temp;
+	int		ret;
 
 	i = 1;
+	ret = 0;
 	env = (*env_store())->next;
 	if (argv[1] == NULL)
 		export_putenvs(env);
@@ -92,6 +94,8 @@ int	export_command(char **argv)
 	{
 		name = export_getname(argv[i]);
 		value = export_getvalue(argv[i]);
+		if (name == NULL)
+			ret = 1;
 		if (check_type(argv[i]) == '=')
 		{
 			env = env_search(env, name);
@@ -122,5 +126,5 @@ int	export_command(char **argv)
 		i++;
 	}
 	env_update("?", "0");
-	return (0);
+	return (ret);
 }
