@@ -14,19 +14,17 @@
 
 static char *export_getname(char *argv)
 {
-	int i;
-	char *name;
+	int		i;
+	char	*name;
 
-	i = 0;
-	if (!argv[i])
+	i = -1;
+	if (!argv[0])
 		return (NULL);
-	while (argv[i])
+	while (argv[++i])
 	{
-		if (!env_name_judge(argv) || (argv[i] == ' ' && argv[i + 1] == '='))
-		{
-			ft_eprintf("not a valid identifier\n");
+		if (!env_name_judge(argv) || (argv[i] == ' ' && argv[i + 1] == '=')
+			&& ft_eprintf("not a valid identifier\n"))
 			return (NULL);
-		}
 		if (argv[i] == '=')
 		{
 			name = ft_calloc(i + 1, sizeof(char));
@@ -39,7 +37,6 @@ static char *export_getname(char *argv)
 			ft_strlcpy(name, argv, i + 1);
 			return (name);
 		}
-		i++;
 	}
 	name = ft_calloc(i + 1, sizeof(char));
 	ft_strlcpy(name, argv, i + 1);
@@ -80,8 +77,8 @@ static int	export_insert(char *arg, t_env *env)
 	char	*value;
 	char	*temp;
 
-	name = export_getname(arg);
-	value = export_getvalue(arg);
+	name = export_getname(arg);   // <--- Leak
+	value = export_getvalue(arg); // <--- Leak
 	env = env_search(env, name);
 	if (name == NULL)
 		return (1);
