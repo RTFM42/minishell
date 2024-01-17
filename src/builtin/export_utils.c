@@ -76,11 +76,11 @@ char check_type(char *str)
 
 int export_command(char **argv)
 {
-	t_env *env;
-	char *name;
-	char *value;
-	char *temp;
-	int ret;
+	t_env	*env;
+	char	*name;
+	char	*value;
+	char	*temp;
+	int		ret;
 
 	ret = 0;
 	env = (*env_store())->next;
@@ -98,7 +98,7 @@ int export_command(char **argv)
 		else if (check_type(*argv) == '=')
 			env_search(env, name)->value = value;
 		else if (check_type(*argv) == '+' && env == NULL)
-				env_list_add(env_store(), name, value);
+			env_list_add(env_store(), name, value);
 		else if (check_type(*argv) == '+')
 		{
 			temp = env->value;
