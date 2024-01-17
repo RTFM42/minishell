@@ -58,7 +58,7 @@ static char *export_getvalue(char *argv)
 	return (value);
 }
 
-char check_type(char *str)
+static char check_type(char *str)
 {
 	int i;
 
@@ -74,12 +74,37 @@ char check_type(char *str)
 	return (0);
 }
 
-int export_command(char **argv)
+static int	export_insert(char *arg, t_env *env)
 {
-	t_env	*env;
 	char	*name;
 	char	*value;
 	char	*temp;
+
+	name = export_getname(arg);
+	value = export_getvalue(arg);
+	env = env_search(env, name);
+	if (name == NULL)
+		return (1);
+	else if (check_type(arg) == '=' && env == NULL)
+		env_list_add(env_store(), name, value);
+	else if (check_type(arg) == '=')
+		env_search(env, name)->value = value;
+	else if (check_type(arg) == '+' && env == NULL)
+		env_list_add(env_store(), name, value);
+	else if (check_type(arg) == '+')
+	{
+		temp = env->value;
+		env->value = ft_strjoin(env->value, value);
+		free(temp);
+	}
+	else if (check_type(arg) == 0 && env == NULL)
+		env_list_add(env_store(), name, NULL);
+	return (0);
+}
+
+int export_command(char **argv)
+{
+	t_env	*env;
 	int		ret;
 
 	ret = 0;
@@ -87,26 +112,7 @@ int export_command(char **argv)
 	if (ft_memcpy(&env, &(*env_store())->next, sizeof(void *)) && !argv[1])
 		export_putenvs(env);
 	while (env_update("?", ft_itoa(ret)) && *++argv)
-	{
-		name = export_getname(*argv);
-		value = export_getvalue(*argv);
-		env = env_search(env, name);
-		if (name == NULL)
+		if (export_insert(*argv, env))
 			ret = 1;
-		else if (check_type(*argv) == '=' && env == NULL)
-			env_list_add(env_store(), name, value);
-		else if (check_type(*argv) == '=')
-			env_search(env, name)->value = value;
-		else if (check_type(*argv) == '+' && env == NULL)
-			env_list_add(env_store(), name, value);
-		else if (check_type(*argv) == '+')
-		{
-			temp = env->value;
-			env->value = ft_strjoin(env->value, value);
-			free(temp);
-		}
-		else if (check_type(*argv) == 0 && env == NULL)
-			env_list_add(env_store(), name, NULL);
-	}
 	return (ret);
 }
