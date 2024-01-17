@@ -125,6 +125,6 @@ int	export_command(char **argv)
 		}
 		i++;
 	}
-	env_update("?", "0");
+	env_update("?", ft_itoa(ret));
 	return (ret);
 }
