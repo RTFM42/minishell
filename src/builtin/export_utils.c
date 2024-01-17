@@ -12,10 +12,10 @@
 
 #include "../../builtin.h"
 
-static char	*export_getname(char *argv)
+static char *export_getname(char *argv)
 {
-	int		i;
-	char	*name;
+	int i;
+	char *name;
 
 	i = 0;
 	if (!argv[i])
@@ -24,13 +24,11 @@ static char	*export_getname(char *argv)
 	{
 		if (!env_name_judge(argv) || (argv[i] == ' ' && argv[i + 1] == '='))
 		{
-			DEBUG();
 			ft_eprintf("not a valid identifier\n");
 			return (NULL);
 		}
 		if (argv[i] == '=')
 		{
-			DEBUG();
 			name = ft_calloc(i + 1, sizeof(char));
 			ft_strlcpy(name, argv, i + 1);
 			return (name);
@@ -48,10 +46,10 @@ static char	*export_getname(char *argv)
 	return (name);
 }
 
-static char	*export_getvalue(char *argv)
+static char *export_getvalue(char *argv)
 {
-	char	*value;
-	char	*equal;
+	char *value;
+	char *equal;
 
 	equal = ft_strchr(argv, '=');
 	if (equal == NULL)
@@ -60,9 +58,9 @@ static char	*export_getvalue(char *argv)
 	return (value);
 }
 
-char	check_type(char *str)
+char check_type(char *str)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (str[i])
@@ -76,54 +74,39 @@ char	check_type(char *str)
 	return (0);
 }
 
-int	export_command(char **argv)
+int export_command(char **argv)
 {
-	size_t	i;
-	t_env	*env;
-	char	*name;
-	char	*value;
-	char	*temp;
-	int		ret;
+	t_env *env;
+	char *name;
+	char *value;
+	char *temp;
+	int ret;
 
-	i = 1;
 	ret = 0;
 	env = (*env_store())->next;
-	if (argv[1] == NULL)
+	if (ft_memcpy(&env, &(*env_store())->next, sizeof(void *)) && !argv[1])
 		export_putenvs(env);
-	while (argv[i])
+	while (*++argv)
 	{
-		name = export_getname(argv[i]);
-		value = export_getvalue(argv[i]);
+		name = export_getname(*argv);
+		value = export_getvalue(*argv);
+		env = env_search(env, name);
 		if (name == NULL)
 			ret = 1;
-		else if (check_type(argv[i]) == '=')
-		{
-			env = env_search(env, name);
-			if (env == NULL)
+		else if (check_type(*argv) == '=' && env == NULL)
+			env_list_add(env_store(), name, value);
+		else if (check_type(*argv) == '=')
+			env_search(env, name)->value = value;
+		else if (check_type(*argv) == '+' && env == NULL)
 				env_list_add(env_store(), name, value);
-			else
-				env_search(env, name)->value = value;
-		}
-		else if (check_type(argv[i]) == '+')
+		else if (check_type(*argv) == '+')
 		{
-			env = env_search(env, name);
-			if (env == NULL)
-				env_list_add(env_store(), name, value);
-			else
-			{
-				env = env_search(env, name);
-				temp = env->value;
-				env->value = ft_strjoin(env->value, value);
-				free(temp);
-			}
+			temp = env->value;
+			env->value = ft_strjoin(env->value, value);
+			free(temp);
 		}
-		else if (check_type(argv[i]) == 0)
-		{
-			env = env_search(env, name);
-			if (env == NULL)
-				env_list_add(env_store(), name, NULL);
-		}
-		i++;
+		else if (check_type(*argv) == 0 && env == NULL)
+			env_list_add(env_store(), name, NULL);
 	}
 	env_update("?", ft_itoa(ret));
 	return (ret);

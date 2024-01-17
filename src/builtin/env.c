@@ -14,6 +14,8 @@
 
 t_env	*env_search(t_env *env, char *name)
 {
+	if (name == NULL)
+		return (NULL);
 	while (env)
 	{
 		if (env->name && ft_strcmp(env->name, name) == 0)
