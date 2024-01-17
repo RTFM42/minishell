@@ -60,7 +60,7 @@ static char	*export_getvalue(char *argv)
 	return (value);
 }
 
-int	check_plus_equal(char *str)
+char	check_type(char *str)
 {
 	int	i;
 
@@ -68,9 +68,9 @@ int	check_plus_equal(char *str)
 	while (str[i])
 	{
 		if (str[i] == '=')
-			return (0);
+			return ('=');
 		else if (str[i] == '+' && str[i + 1] == '=')
-			return (1);
+			return ('+');
 		i++;
 	}
 	return (0);
@@ -92,31 +92,32 @@ int	export_command(char **argv)
 	{
 		name = export_getname(argv[i]);
 		value = export_getvalue(argv[i]);
-		printf("pkpkpkpk: %s:%s\n", name, value);
-		if (name && !value && env_search(env, name))
-			env_list_add(env_store(), name, value);
-		if (check_plus_equal(argv[i]))
+		if (check_type(argv[i]) == '=')
+		{
+			env = env_search(env, name);
+			if (env == NULL)
+				env_list_add(env_store(), name, value);
+			else
+				env_search(env, name)->value = value;
+		}
+		else if (check_type(argv[i]) == '+')
 		{
 			env = env_search(env, name);
 			if (env == NULL)
 				env_list_add(env_store(), name, value);
 			else
 			{
-				temp = value;
-				env->value = export_strjoin(env->value, value);
+				env = env_search(env, name);
+				temp = env->value;
+				env->value = ft_strjoin(env->value, value);
 				free(temp);
 			}
 		}
-		else if (!check_plus_equal(argv[i]))
+		else
 		{
-			if (env_search(env, name))
-				export_strjoin(env->value, value);
-			else
-				env_list_add(env_store(), name, value);
-			if (name)
-				free(name);
-			if (value)
-				free(value);
+			env = env_search(env, name);
+			if (env == NULL)
+				env_list_add(env_store(), name, NULL);
 		}
 		i++;
 	}
