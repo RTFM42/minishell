@@ -67,6 +67,7 @@ void	*env_update(char *name, char *value)
 		current->value = ft_strdup(value);
 	else
 		env_list_add(env_list, name, value);
+	return (env_list);
 }
 
 t_env	*lstlast(t_env *lst)
