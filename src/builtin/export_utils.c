@@ -86,7 +86,7 @@ int export_command(char **argv)
 	env = (*env_store())->next;
 	if (ft_memcpy(&env, &(*env_store())->next, sizeof(void *)) && !argv[1])
 		export_putenvs(env);
-	while (*++argv)
+	while (env_update("?", ft_itoa(ret)) && *++argv)
 	{
 		name = export_getname(*argv);
 		value = export_getvalue(*argv);
@@ -108,6 +108,5 @@ int export_command(char **argv)
 		else if (check_type(*argv) == 0 && env == NULL)
 			env_list_add(env_store(), name, NULL);
 	}
-	env_update("?", ft_itoa(ret));
 	return (ret);
 }

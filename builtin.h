@@ -52,7 +52,7 @@ t_env	**env_store(void);
 //env_utils
 bool	env_name_judge(char *name);
 void	env_del(t_env **env_list, char *name);
-void	env_update(char *name, char *value);
+void	*env_update(char *name, char *value);
 t_env	*lstlast(t_env *lst);
 
 //export

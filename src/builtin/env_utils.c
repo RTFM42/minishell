@@ -56,7 +56,7 @@ void	env_del(t_env **env_list, char *name)
 	return ;
 }
 
-void	env_update(char *name, char *value)
+void	*env_update(char *name, char *value)
 {
 	t_env	*current;
 	t_env	**env_list;
