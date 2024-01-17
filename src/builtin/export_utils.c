@@ -113,7 +113,7 @@ int	export_command(char **argv)
 				free(temp);
 			}
 		}
-		else
+		else if (check_type(argv[i]) == 0)
 		{
 			env = env_search(env, name);
 			if (env == NULL)
