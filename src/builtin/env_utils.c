@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:42:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/17 18:23:58 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/17 19:34:11 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ bool	env_name_judge(char *name)
 	if (!ft_isalpha(name[i]) && name[i] != '_')
 		return (false);
 	i++;
-	while (name[i] && name[i] != '=')
+	while (name[i] && !((name[i] == '=') || \
+		(name[i] == '+' && name[i + 1] == '=')))
 	{
 		if (!ft_isalnum(name[i]) && name[i] != '_')
 			return (false);

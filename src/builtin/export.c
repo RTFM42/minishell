@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/16 21:52:25 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/17 20:01:06 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ export=
 何も出ない
 
 export " "=" "
-export: not valid in this context:  
+export: not a valid identifier 
 export '$'="aa"
 zsh: not an identifier: $
 

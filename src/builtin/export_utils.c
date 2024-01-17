@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:41:00 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/17 18:23:29 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/17 20:45:18 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,11 @@ static char	*export_getname(char *argv)
 		return (NULL);
 	while (argv[i])
 	{
-		if (!env_name_judge(argv))
+		if (!env_name_judge(argv) || (argv[i] == ' ' && argv[i + 1] == '='))
 		{
-			perror("not a valid identifier");
-			return (0);
+			DEBUG();
+			printf("not a valid identifier\n");
+			break ;
 		}
 		if (argv[i] == '=')
 		{
@@ -92,7 +93,7 @@ int	export_command(char **argv)
 		name = export_getname(argv[i]);
 		value = export_getvalue(argv[i]);
 		printf("pkpkpkpk: %s:%s\n", name, value);
-		if (name && !value)
+		if (name && !value && env_search(env, name))
 			env_list_add(env_store(), name, value);
 		if (check_plus_equal(argv[i]))
 		{
