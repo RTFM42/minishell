@@ -6,7 +6,7 @@
 #    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 16:07:14 by yushsato          #+#    #+#              #
-#    Updated: 2024/01/16 21:51:10 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/01/17 15:21:05 by nsakanou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS	= ./src/ms_token.c \
 		  ./src/builtin/pwd.c \
 		  ./src/builtin/export.c \
 		  ./src/builtin/export_utils.c \
+		  ./src/builtin/export_utils2.c \
 		  ./src/builtin/exit.c \
 		  ./src/builtin/env_utils.c \
 		  ./src/builtin/env_store.c \

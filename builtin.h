@@ -6,12 +6,13 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:23:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/16 21:52:51 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/17 17:28:08 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUILTIN_H
 # define BUILTIN_H
+# define DEBUG() printf("[%s](%d)\n", __func__, __LINE__)
 
 # include "lib/libft/libft.h"
 # include <stdbool.h>
@@ -55,6 +56,7 @@ t_env	*lstlast(t_env *lst);
 
 //export
 void	export_putenvs(t_env *env);
+char	*export_strjoin(const char *s1, const char *s2);
 
 //utils
 void	ft_error(void);

@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:41:00 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/16 23:21:07 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/17 18:23:29 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,49 +14,65 @@
 
 static char	*export_getname(char *argv)
 {
-	char	*value;
+	int		i;
 	char	*name;
 
-	if (ft_strchr(argv, '+') && *(ft_strchr(argv, '+') + 1) == '=')
+	i = 0;
+	if (!argv[i])
+		return (NULL);
+	while (argv[i])
 	{
-		value = ft_strchr(argv, '+') + 2;
-		name = (char *)ft_calloc(value - argv, 1);
-		ft_strlcpy(name, argv, value - argv - 1);
+		if (!env_name_judge(argv))
+		{
+			perror("not a valid identifier");
+			return (0);
+		}
+		if (argv[i] == '=')
+		{
+			DEBUG();
+			name = ft_calloc(i + 1, sizeof(char));
+			ft_strlcpy(name, argv, i + 1);
+			return (name);
+		}
+		else if (argv[i] == '+' && argv[i + 1] == '=')
+		{
+			name = ft_calloc(i + 1, sizeof(char));
+			ft_strlcpy(name, argv, i + 1);
+			return (name);
+		}
+		i++;
 	}
-	else
-	{
-		value = ft_strchr(argv, '=') + 1;
-		name = (char *)ft_calloc(value - argv + 1, 1);
-		ft_strlcpy(name, argv, value - argv);
-	}
+	name = ft_calloc(i + 1, sizeof(char));
+	ft_strlcpy(name, argv, i + 1);
 	return (name);
 }
 
 static char	*export_getvalue(char *argv)
 {
 	char	*value;
+	char	*equal;
 
-	value = ft_strdup(ft_strchr(argv, '=') + 1);
+	equal = ft_strchr(argv, '=');
+	if (equal == NULL)
+		return (NULL);
+	value = ft_strdup(equal + 1);
 	return (value);
 }
 
-bool	check_plus_equal(char *str)
+int	check_plus_equal(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (ft_strnstr(str, "+=", ft_strlen(str)))
+	while (str[i])
 	{
-		while (str[i] != '+')
-		{
-			if (str[i] == '=')
-				return (false);
-			i++;
-		}
-		return (true);
+		if (str[i] == '=')
+			return (0);
+		else if (str[i] == '+' && str[i + 1] == '=')
+			return (1);
+		i++;
 	}
-	else
-		return (false);
+	return (0);
 }
 
 int	export_command(char **argv)
@@ -65,6 +81,7 @@ int	export_command(char **argv)
 	t_env	*env;
 	char	*name;
 	char	*value;
+	char	*temp;
 
 	i = 1;
 	env = (*env_store())->next;
@@ -75,19 +92,31 @@ int	export_command(char **argv)
 		name = export_getname(argv[i]);
 		value = export_getvalue(argv[i]);
 		printf("pkpkpkpk: %s:%s\n", name, value);
+		if (name && !value)
+			env_list_add(env_store(), name, value);
 		if (check_plus_equal(argv[i]))
-			env_update(name, value);
+		{
+			env = env_search(env, name);
+			if (env == NULL)
+				env_list_add(env_store(), name, value);
+			else
+			{
+				temp = value;
+				env->value = export_strjoin(env->value, value);
+				free(temp);
+			}
+		}
 		else if (!check_plus_equal(argv[i]))
 		{
-			env_list_add(env_store(), name, value);
+			if (env_search(env, name))
+				export_strjoin(env->value, value);
+			else
+				env_list_add(env_store(), name, value);
 			if (name)
 				free(name);
 			if (value)
 				free(value);
 		}
-		i++;
-		export_putenvs(env);
-		strerror(errno);
 		i++;
 	}
 	env_update("?", "0");
