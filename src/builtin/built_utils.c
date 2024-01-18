@@ -6,15 +6,21 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:11:39 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/15 20:47:26 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:49:12 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtin.h"
 
+int	cd_error(void)
+{
+	ft_eprintf("No such file or directory.\n");
+	return (EXIT_FAILURE);
+}
+
 void	ft_error(void)
 {
-	strerror(errno);
+	ft_eprintf("Error\n");
 	exit(EXIT_FAILURE);
 }
 

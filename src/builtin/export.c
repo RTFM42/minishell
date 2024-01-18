@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/17 20:01:06 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 16:02:23 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,21 @@ void	export_putenvs(t_env *env)
 		free(prev);
 }
 
+int	export_command(char **argv)
+{
+	t_env	*env;
+	int		ret;
+
+	ret = 0;
+	env = (*env_store())->next;
+	if (ft_memcpy(&env, &(*env_store())->next, sizeof(void *)) && !argv[1])
+		export_putenvs(env);
+	while (env_update("?", ft_itoa(ret)) && *++argv)
+		if (export_insert(*argv, env))
+			ret = 1;
+	return (ret);
+}
+
 /*
 export MY_VAR="Hello World"
 export 変数名=値
@@ -111,18 +126,10 @@ export: not a valid identifier
 export '$'="aa"
 zsh: not an identifier: $
 
-export a= b
-↓二つ定義される
-a=‘ ‘
-b
 
-bash-3.2$ export a
-bash-3.2$ export 1
-bash: export: `1': not a valid identifier
-bash-3.2$ export a 1
-bash: export: `1': not a valid identifier
+bash-3.2$ export asdfg234dfgh
+declare -x asdfg234dfgh
 
-bash-3.2$ export TEAT="1"
-bash-3.2$ export -p | grep TEAT
-declare -x TEAT="1"
+bash-3.2$ export 234asdf
+bash: export: `234asdf': not a valid identifier
 */

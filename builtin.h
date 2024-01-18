@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:23:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/17 23:05:18 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:49:33 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int		env_command(void);
 //env
 t_env	*env_search(t_env *env, char *name);
 void	env_list_add(t_env **env_list, char *name, char *value);
-void	env_list_print(t_env *env_list);
 t_env	*env_create(char **envp);
 t_env	**env_store(void);
 
@@ -56,10 +55,12 @@ void	*env_update(char *name, char *value);
 t_env	*lstlast(t_env *lst);
 
 //export
+char	check_type(char *str);
 void	export_putenvs(t_env *env);
 char	*export_strjoin(const char *s1, const char *s2);
+int		export_insert(char *arg, t_env *env);
 
-//utils
+int		cd_error(void);
 void	ft_error(void);
 int		ft_strcmp(const char *s1, const char *s2);
 

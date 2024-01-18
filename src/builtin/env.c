@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:59 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/17 18:01:42 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:45:42 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ t_env	*env_create(char **envp)
 	t_env	*env_list;
 
 	env_list = (t_env *)ft_calloc(1, sizeof(t_env));
-	if (!env_list)
-		ft_error();
 	i = 0;
 	while (envp[i])
 	{

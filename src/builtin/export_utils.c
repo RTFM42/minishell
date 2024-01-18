@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:41:00 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/18 14:33:51 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:39:05 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static char	*export_getname(char *argv)
 		return (NULL);
 	while (argv[++i])
 	{
-		if (!env_name_judge(argv) || (argv[i] == ' ' && argv[i + 1] == '=')
-			&& ft_eprintf("not a valid identifier\n"))
+		if (!env_name_judge(argv) || ((argv[i] == ' ' && argv[i + 1] == '=') \
+			&& ft_eprintf("not a valid identifier\n")))
 			return (NULL);
 		if (argv[i] == '=')
 		{
@@ -55,33 +55,21 @@ static char	*export_getvalue(char *argv)
 	return (value);
 }
 
-static char	check_type(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '=')
-			return ('=');
-		else if (str[i] == '+' && str[i + 1] == '=')
-			return ('+');
-		i++;
-	}
-	return (0);
-}
-
-static int	export_insert(char *arg, t_env *env)
+int	export_insert(char *arg, t_env *env)
 {
 	char	*name;
 	char	*value;
 	char	*temp;
 
-	name = export_getname(arg);   // <--- Leak
-	value = export_getvalue(arg); // <--- Leak
+	name = export_getname(arg);
+	value = export_getvalue(arg);
 	env = env_search(env, name);
 	if (name == NULL)
+	{
+		free(name);
+		free(value);
 		return (1);
+	}
 	else if (check_type(arg) == '=' && env == NULL)
 		env_list_add(env_store(), name, value);
 	else if (check_type(arg) == '=')
@@ -96,20 +84,7 @@ static int	export_insert(char *arg, t_env *env)
 	}
 	else if (check_type(arg) == 0 && env == NULL)
 		env_list_add(env_store(), name, NULL);
+	free(name);
+	free(value);
 	return (0);
-}
-
-int	export_command(char **argv)
-{
-	t_env	*env;
-	int		ret;
-
-	ret = 0;
-	env = (*env_store())->next;
-	if (ft_memcpy(&env, &(*env_store())->next, sizeof(void *)) && !argv[1])
-		export_putenvs(env);
-	while (env_update("?", ft_itoa(ret)) && *++argv)
-		if (export_insert(*argv, env))
-			ret = 1;
-	return (ret);
 }
