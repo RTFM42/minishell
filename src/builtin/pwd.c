@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:15 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/18 17:53:28 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 18:40:57 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,8 @@ int	pwd_command(char *init)
 		if (!tmp)
 			free(tmp);
 	}
-	else
+	else if (!printf("%s\n", save))
 	{
-		printf("%s\n", save);
-		strerror(errno);
 		free(pwd);
 		env_update("?", "1");
 		return (EXIT_FAILURE);
