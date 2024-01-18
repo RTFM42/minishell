@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:23:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/18 15:49:33 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:02:44 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_env	**env_store(void);
 
 //env_utils
 bool	env_name_judge(char *name);
-void	env_del(t_env **env_list, char *name);
+t_env	*env_del(t_env **env_list, char *name);
 void	*env_update(char *name, char *value);
 t_env	*lstlast(t_env *lst);
 

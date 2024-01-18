@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:41:00 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/18 15:39:05 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 16:42:52 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static char	*export_getname(char *argv)
 		return (NULL);
 	while (argv[++i])
 	{
-		if (!env_name_judge(argv) || ((argv[i] == ' ' && argv[i + 1] == '=') \
-			&& ft_eprintf("not a valid identifier\n")))
+		if ((!env_name_judge(argv) || (argv[i] == ' ' && argv[i + 1] == '='))
+			&& ft_eprintf("not a valid identifier\n"))
 			return (NULL);
 		if (argv[i] == '=')
 		{
