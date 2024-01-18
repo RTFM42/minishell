@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/18 17:06:32 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:33:26 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,3 @@ int	unset_command(char **argv)
 	env_update("?", ft_itoa(status));
 	return (EXIT_SUCCESS);
 }
-
-/*
-bash-3.2$ unset a 2 = b 2
-bash: unset: `2': not a valid identifier
-bash: unset: `=': not a valid identifier
-bash: unset: `2': not a valid identifier
-
-環境変数が存在しなくてもエラーとはなりません
-*/

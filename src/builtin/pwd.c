@@ -6,21 +6,32 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:15 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/15 18:07:48 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:53:28 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtin.h"
 
-int	pwd_command(void)
+int	pwd_command(char *init)
 {
-	char	*pwd;
+	char		*pwd;
+	static char	*save;
+	char		*tmp;
 
 	pwd = ft_calloc(1, PATH_MAX);
-	if (getcwd(pwd, PATH_MAX) != NULL)
+	if (init)
+		save = ft_strdup(init);
+	else if (getcwd(pwd, PATH_MAX) != NULL)
+	{
+		tmp = save;
+		save = ft_strdup(pwd);
 		printf("%s\n", pwd);
+		if (!tmp)
+			free(tmp);
+	}
 	else
 	{
+		printf("%s\n", save);
 		strerror(errno);
 		free(pwd);
 		env_update("?", "1");

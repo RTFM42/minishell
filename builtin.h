@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:23:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/18 17:02:44 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:54:10 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_env
 int		exec_builtin(char **argv);
 //command
 int		echo_command(char **argv);
-int		pwd_command(void);
+int		pwd_command(char *init);
 int		unset_command(char **argv);
 int		exit_command(char **argv);
 int		cd_command(char **argv);
