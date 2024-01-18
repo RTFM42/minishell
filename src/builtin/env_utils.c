@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:42:38 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/15 18:24:06 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:04:26 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@ bool	env_name_judge(char *name)
 	size_t	i;
 
 	i = 0;
-	if (!ft_isalpha(name[i]) && name[i] != '_')
+	if (!(ft_isalpha(name[i]) || name[i] == '_'))
 		return (false);
 	i++;
-	while (name[i])
+	while (name[i] && !((name[i] == '=') || \
+		(name[i] == '+' && name[i + 1] == '=')))
 	{
 		if (!ft_isalnum(name[i]) && name[i] != '_')
 			return (false);
@@ -29,13 +30,13 @@ bool	env_name_judge(char *name)
 	return (true);
 }
 
-void	env_del(t_env **env_list, char *name)
+t_env	*env_del(t_env **env_list, char *name)
 {
 	t_env	*prev;
 	t_env	*current;
 
 	prev = NULL;
-	current = *env_list;
+	current = (*env_list)->next;
 	while (current)
 	{
 		if (ft_strcmp(current->name, name) == 0)
@@ -47,15 +48,15 @@ void	env_del(t_env **env_list, char *name)
 			free(current->name);
 			free(current->value);
 			free(current);
-			return ;
+			return (*env_list);
 		}
 		prev = current;
 		current = current->next;
 	}
-	return ;
+	return (*env_list);
 }
 
-void	env_update(char *name, char *value)
+void	*env_update(char *name, char *value)
 {
 	t_env	*current;
 	t_env	**env_list;
@@ -66,6 +67,7 @@ void	env_update(char *name, char *value)
 		current->value = ft_strdup(value);
 	else
 		env_list_add(env_list, name, value);
+	return (env_list);
 }
 
 t_env	*lstlast(t_env *lst)

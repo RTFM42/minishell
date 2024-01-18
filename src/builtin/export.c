@@ -6,58 +6,102 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/15 18:02:54 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 16:02:23 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../minishell.h"
 #include "../../builtin.h"
 
-static char	*export_getname(char *argv)
+static t_env	*export_envcpy(t_env *env)
 {
-	char	*value;
-	char	*name;
+	t_env	*copy;
+	t_env	*prev;
+	t_env	*head;
 
-	value = ft_strchr(argv, '=') + 1;
-	name = (char *)ft_calloc(value - argv + 1, 1);
-	ft_strlcpy(name, argv, value - argv);
-	return (name);
+	prev = NULL;
+	while (env)
+	{
+		copy = ft_calloc(1, sizeof(t_env));
+		ft_memcpy(copy, env, sizeof(t_env));
+		if (prev != NULL)
+			prev->next = copy;
+		else
+			head = copy;
+		env = env->next;
+		copy->next = NULL;
+		prev = copy;
+	}
+	return (head);
 }
 
-static char	*export_getvalue(char *argv)
+static t_env	*export_swap(t_env *env)
 {
-	char	*value;
+	char	*tmp;
 
-	value = ft_strdup(ft_strchr(argv, '=') + 1);
-	return (value);
+	ft_memcpy(&tmp, &env->name, sizeof(void *));
+	ft_memcpy(&env->name, &env->next->name, sizeof(void *));
+	ft_memcpy(&env->next->name, &tmp, sizeof(void *));
+	ft_memcpy(&tmp, &env->value, sizeof(void *));
+	ft_memcpy(&env->value, &env->next->value, sizeof(void *));
+	ft_memcpy(&env->next->value, &tmp, sizeof(void *));
+	return (env);
+}
+
+static t_env	*export_putenv(t_env *env)
+{
+	if (!ft_memcmp(env->name, "_", 2)
+		|| !(ft_isalpha(env->name[0]) || env->name[0] == '_'))
+		return (env);
+	if (env->value)
+		ft_printf("declare -x %s=\"%s\"\n", env->name, env->value);
+	else
+		ft_printf("declare -x %s\n", env->name);
+	return (env);
+}
+
+void	export_putenvs(t_env *env)
+{
+	t_env	*copy;
+	t_env	*prev;
+	t_env	*head;
+	int		i;
+
+	copy = export_envcpy(env);
+	head = copy;
+	prev = NULL;
+	i = 1;
+	while (i && ft_memset(&i, 0, sizeof(int)))
+	{
+		while (copy && copy->next)
+		{
+			if (ft_strcmp(copy->name, copy->next->name) > 0
+				&& export_swap(copy))
+				i++;
+			copy = copy->next;
+		}
+		copy = head;
+	}
+	while (copy && export_putenv(copy))
+		copy = copy->next;
+	while (copy && ft_memcpy(&prev, &copy, sizeof(void *))
+		&& ft_memcpy(&copy, &copy->next, sizeof(void *)))
+		free(prev);
 }
 
 int	export_command(char **argv)
 {
-	size_t	i;
-	char	*name;
-	char	*value;
+	t_env	*env;
+	int		ret;
 
-	if (ft_strcmp(argv[0], "export") == 0 && argv[1] == NULL)
-		export_print_env();
-	i = 1;
-	while (argv[i])
-	{
-		name = export_getname(argv[i]);
-		if (env_name_judge(name))
-		{
-			value = export_getvalue(argv[i]);
-			env_list_add(env_store(), name, value);
-			free(name);
-			free(value);
-			i++;
-			continue ;
-		}
-		free(name);
-		strerror(errno);
-		i++;
-	}
-	env_update("?", "0");
-	return (0);
+	ret = 0;
+	env = (*env_store())->next;
+	if (ft_memcpy(&env, &(*env_store())->next, sizeof(void *)) && !argv[1])
+		export_putenvs(env);
+	while (env_update("?", ft_itoa(ret)) && *++argv)
+		if (export_insert(*argv, env))
+			ret = 1;
+	return (ret);
 }
 
 /*
@@ -78,22 +122,14 @@ export=
 何も出ない
 
 export " "=" "
-export: not valid in this context:  
+export: not a valid identifier 
 export '$'="aa"
 zsh: not an identifier: $
 
-export a= b
-↓二つ定義される
-a=‘ ‘
-b
 
-bash-3.2$ export a
-bash-3.2$ export 1
-bash: export: `1': not a valid identifier
-bash-3.2$ export a 1
-bash: export: `1': not a valid identifier
+bash-3.2$ export asdfg234dfgh
+declare -x asdfg234dfgh
 
-bash-3.2$ export TEAT="1"
-bash-3.2$ export -p | grep TEAT
-declare -x TEAT="1"
+bash-3.2$ export 234asdf
+bash: export: `234asdf': not a valid identifier
 */

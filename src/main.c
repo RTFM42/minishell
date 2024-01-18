@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:07:56 by yushsato          #+#    #+#             */
-/*   Updated: 2024/01/15 20:43:26 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:59:18 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,15 @@ int	main(int ac, char **av, char **envp)
 {
 	char	*line;
 	t_token	*chain;
+	char	*save;
 
 	(void)ac;
 	(void)av;
+	save = ft_calloc(1, PATH_MAX);
+	getcwd(save, PATH_MAX);
 	env_create(envp);
+	pwd_command(save);
+	free(save);
 	while (1)
 	{
 		ms_setsignal();

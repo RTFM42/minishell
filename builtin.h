@@ -6,13 +6,15 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:23:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/15 20:09:31 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:54:10 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUILTIN_H
 # define BUILTIN_H
+# define DEBUG() printf("[%s](%d)\n", __func__, __LINE__)
 
+# include "lib/ft_eprintf/ft_eprintf.h"
 # include "lib/libft/libft.h"
 # include <stdbool.h>
 # include <string.h>
@@ -33,30 +35,32 @@ typedef struct s_env
 int		exec_builtin(char **argv);
 //command
 int		echo_command(char **argv);
-int		pwd_command(void);
+int		pwd_command(char *init);
 int		unset_command(char **argv);
 int		exit_command(char **argv);
 int		cd_command(char **argv);
 int		export_command(char **argv);
+int		env_command(void);
 
 //env
-int		env_command(void);
 t_env	*env_search(t_env *env, char *name);
 void	env_list_add(t_env **env_list, char *name, char *value);
-void	env_list_print(t_env *env_list);
 t_env	*env_create(char **envp);
 t_env	**env_store(void);
 
 //env_utils
 bool	env_name_judge(char *name);
-void	env_del(t_env **env_list, char *name);
-void	env_update(char *name, char *value);
+t_env	*env_del(t_env **env_list, char *name);
+void	*env_update(char *name, char *value);
 t_env	*lstlast(t_env *lst);
 
 //export
-void	export_print_env(void);
+char	check_type(char *str);
+void	export_putenvs(t_env *env);
+char	*export_strjoin(const char *s1, const char *s2);
+int		export_insert(char *arg, t_env *env);
 
-//utils
+int		cd_error(void);
 void	ft_error(void);
 int		ft_strcmp(const char *s1, const char *s2);
 
