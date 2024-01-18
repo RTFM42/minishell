@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:23:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/17 21:37:46 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/17 23:05:18 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ int		unset_command(char **argv);
 int		exit_command(char **argv);
 int		cd_command(char **argv);
 int		export_command(char **argv);
+int		env_command(void);
 
 //env
-int		env_command(void);
 t_env	*env_search(t_env *env, char *name);
 void	env_list_add(t_env **env_list, char *name, char *value);
 void	env_list_print(t_env *env_list);

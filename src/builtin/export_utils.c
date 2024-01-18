@@ -6,13 +6,13 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:41:00 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/17 21:32:23 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/18 14:33:51 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtin.h"
 
-static char *export_getname(char *argv)
+static char	*export_getname(char *argv)
 {
 	int		i;
 	char	*name;
@@ -43,10 +43,10 @@ static char *export_getname(char *argv)
 	return (name);
 }
 
-static char *export_getvalue(char *argv)
+static char	*export_getvalue(char *argv)
 {
-	char *value;
-	char *equal;
+	char	*value;
+	char	*equal;
 
 	equal = ft_strchr(argv, '=');
 	if (equal == NULL)
@@ -55,9 +55,9 @@ static char *export_getvalue(char *argv)
 	return (value);
 }
 
-static char check_type(char *str)
+static char	check_type(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -99,7 +99,7 @@ static int	export_insert(char *arg, t_env *env)
 	return (0);
 }
 
-int export_command(char **argv)
+int	export_command(char **argv)
 {
 	t_env	*env;
 	int		ret;
