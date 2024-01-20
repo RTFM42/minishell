@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 15:54:39 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/18 15:43:22 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/20 14:09:35 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
    ./pipex infile "grep a1" "wc -w" outfile
    < infile grep a1 | wc -w > outfile
 
-   command1 | command2 の形式のコマンドでは、command1 の出力が command2 の入力に渡され、これにより複数のプロセスが連携してデータを処理
+   command1 | command2 の形式のコマンドでは、command1 の出力が command2 の入力に渡され、
+	 これにより複数のプロセスが連携してデータを処理
  */
 
 /*
@@ -43,3 +44,8 @@ pipe システムコールを使用して生成。
 
 close_pipe
 */
+
+void	create_pipe(t_pipe *pipe)
+{
+
+}
