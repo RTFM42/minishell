@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/18 16:02:23 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:19:33 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,33 +103,3 @@ int	export_command(char **argv)
 			ret = 1;
 	return (ret);
 }
-
-/*
-export MY_VAR="Hello World"
-export 変数名=値
-
-+=
-ex)
-export a=1
-export a+="new"
-↓
-echo $a
-1new
-
- export =
-bash: export: `=': not a valid identifier
-export=
-何も出ない
-
-export " "=" "
-export: not a valid identifier 
-export '$'="aa"
-zsh: not an identifier: $
-
-
-bash-3.2$ export asdfg234dfgh
-declare -x asdfg234dfgh
-
-bash-3.2$ export 234asdf
-bash: export: `234asdf': not a valid identifier
-*/

@@ -6,13 +6,12 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:23:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/18 17:54:10 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:19:01 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUILTIN_H
 # define BUILTIN_H
-# define DEBUG() printf("[%s](%d)\n", __func__, __LINE__)
 
 # include "lib/ft_eprintf/ft_eprintf.h"
 # include "lib/libft/libft.h"
@@ -33,6 +32,7 @@ typedef struct s_env
 }t_env;
 
 int		exec_builtin(char **argv);
+
 //command
 int		echo_command(char **argv);
 int		pwd_command(char *init);
@@ -61,7 +61,7 @@ char	*export_strjoin(const char *s1, const char *s2);
 int		export_insert(char *arg, t_env *env);
 
 int		cd_error(void);
-void	ft_error(void);
+void	list_error(void);
 int		ft_strcmp(const char *s1, const char *s2);
 
 #endif

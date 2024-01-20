@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:52:59 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/18 15:45:42 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:20:40 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	env_list_add(t_env **env_list, char *name, char *value)
 
 	new_env = (t_env *)ft_calloc(1, sizeof(t_env));
 	if (!env_list)
-		ft_error();
+		list_error();
 	new_env->name = ft_strdup(name);
 	if (value == NULL)
 		new_env->value = NULL;

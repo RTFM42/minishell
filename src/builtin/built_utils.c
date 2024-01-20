@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 13:11:39 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/18 15:49:12 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/01/20 13:17:05 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	cd_error(void)
 	return (EXIT_FAILURE);
 }
 
-void	ft_error(void)
+void	list_error(void)
 {
-	ft_eprintf("Error\n");
+	ft_eprintf("List not found.\n");
 	exit(EXIT_FAILURE);
 }
 
