@@ -58,6 +58,7 @@ int	main(int ac, char **av, char **envp)
 		line = readline("minishell$ ");
 		ms_isctrld(line);
 		chain = lxr_lexer(line);
+		psr_parser(chain);
 		if (test(chain))
 			continue ;
 		dms_putchain(chain);
