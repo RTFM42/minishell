@@ -21,6 +21,8 @@ SRCS	= ./src/ms_token.c \
 		  ./src/lexer/lxr_semicolon.c \
 		  ./src/lexer/lxr_redirect.c \
 		  ./src/lexer/lxr_lexer.c \
+		  ./src/parser/psr_parser.c \
+		  ./src/parser/psr_status.c \
 		  ./src/dms_token.c \
 		  ./src/dms_lxrtochar2.c \
 		  ./src/dms_env.c \

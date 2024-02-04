@@ -47,5 +47,9 @@ int		lxr_pipe(char *str, t_token *chain);
 int		lxr_redirect(char *str, t_token *chain);
 int		lxr_semicolon(char *str, t_token *chain);
 int		lxr_token(char *str, t_token *chain);
+void	psr_status_init(void);
+char	*psr_status_set(char *stats);
+char	*psr_status_get(void);
+t_token	*psr_parser(t_token *chain);
 
 #endif
