@@ -58,7 +58,7 @@ static char	*psr_2quote(char *cache, char **pstr)
 		if (*str == '\0' && psr_status_set("Syntax error: `\"' unexpected\n"))
 			return (cache);
 		if ((!ft_memcmp(str, "\\\\", 2) || !ft_memcmp(str, "\\\"", 2)
-			|| !ft_memcmp(str, "\\\'", 2) || !ft_memcmp(str, "\\$", 2)))
+				|| !ft_memcmp(str, "\\\'", 2) || !ft_memcmp(str, "\\$", 2)))
 		{
 			cache = ft_strnjoin(cache, ++str, 1);
 			str++;
@@ -73,7 +73,7 @@ static char	*psr_2quote(char *cache, char **pstr)
 	*pstr = ++str;
 	return (cache);
 }
-	
+
 static char	*psr_1quote(char *cache, char **pstr)
 {
 	char	*tmp;

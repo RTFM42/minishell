@@ -36,7 +36,7 @@ int	unset_command(char **argv)
 				if (ft_strcmp(env->name, argv[i]) == 0
 					&& env_del(env_store(), argv[i]))
 					break ;
-			env = env->next;
+				env = env->next;
 			}
 		}
 		else
