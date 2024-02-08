@@ -51,6 +51,7 @@ int		lxr_token(char *str, t_token *chain);
 void	psr_status_init(void);
 char	*psr_status_set(char *stats);
 char	*psr_status_get(void);
+char	*psr_doll(char *cache, char **pstr);
 t_token	*psr_parser(t_token *chain);
 
 #endif

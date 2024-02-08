@@ -13,38 +13,6 @@
 #include "../../minishell.h"
 #include "../../builtin.h"
 
-static char	*psr_doll(char *cache, char **pstr)
-{
-	char	*tmp;
-	char	*env;
-	char	*str;
-	t_env	*tenv;
-
-	str = *pstr;
-	if (*str != '$')
-		return (ft_strdup(cache));
-	if (*(str + 1) == '?' || *(str + 1) == '@')
-		env = ft_strnjoin("", str + 1, 1);
-	else
-	{
-		env = ft_strdup("");
-		while (*++str && (*str == '_' || ft_isalnum(*str)))
-		{
-			tmp = env;
-			env = ft_strnjoin(env, str, 1);
-			free(tmp);
-		}
-	}
-	*pstr = str;
-	tenv = env_search(*env_store(), env);
-	free(env);
-	if (tenv)
-		cache = ft_strjoin(tenv->value, cache);
-	else
-		cache = ft_strdup(cache);
-	return (cache);
-}
-
 static char	*psr_2quote(char *cache, char **pstr)
 {
 	char	*tmp;
@@ -63,8 +31,7 @@ static char	*psr_2quote(char *cache, char **pstr)
 			cache = ft_strnjoin(cache, ++str, 1);
 			str++;
 		}
-		else if (!ft_memcmp(str, "$", 1) && *(str + 1)
-			&& (*(str + 1) == '_' || ft_isalnum(*(str + 1))))
+		else if (!ft_memcmp(str, "$", 1) && *(str + 1))
 			cache = psr_doll(cache, &str);
 		else
 			cache = ft_strnjoin(cache, str++, 1);
@@ -129,8 +96,7 @@ t_token	*psr_parser(t_token *chain)
 					cache = psr_2quote(cache, &str);
 				else if (!ft_memcmp(str, "\'", 1))
 					cache = psr_1quote(cache, &str);
-				else if (!ft_memcmp(str, "$", 1) && *(str + 1)
-					&& (*(str + 1) == '_' || ft_isalnum(*(str + 1))))
+				else if (!ft_memcmp(str, "$", 1))
 					cache = psr_doll(cache, &str);
 				else if (*str)
 					cache = ft_strnjoin(cache, str++, 1);
