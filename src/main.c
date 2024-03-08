@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:07:56 by yushsato          #+#    #+#             */
-/*   Updated: 2024/01/18 17:59:18 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/03/08 20:57:46 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	main(int ac, char **av, char **envp)
 		ms_setsignal();
 		line = readline("minishell$ ");
 		ms_isctrld(line);
+		line = psr_env(line);
 		chain = lxr_lexer(line);
 		psr_parser(chain);
 		if (test(chain))
