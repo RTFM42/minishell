@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   psr_status.c                                       :+:      :+:    :+:   */
+/*   psr_error.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 11:00:00 by yushsato          #+#    #+#             */
-/*   Updated: 2024/03/08 19:00:26 by yushsato         ###   ########.fr       */
+/*   Updated: 2024/03/08 20:07:29 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-static char	**psr_status_raw(void)
+static char	**psr_error_raw(void)
 {
 	static char	*str = NULL;
 
 	return (&str);
 }
 
-void	psr_status_init(void)
+void	psr_error_init(void)
 {
 	char	**str;
 
-	str = psr_status_raw();
+	str = psr_error_raw();
 	if (*str)
 		free(*str);
 	*str = NULL;
 }
 
-char	*psr_status_add(char *stats)
+char	*psr_error_add(char *stats)
 {
 	char	**str;
 	char	*tmp;
 
-	str = psr_status_raw();
+	str = psr_error_raw();
 	if (*str)
 	{
 		tmp = *str;
@@ -46,10 +46,10 @@ char	*psr_status_add(char *stats)
 	return (*str);
 }
 
-char	*psr_status_get(void)
+char	*psr_error_get(void)
 {
 	char	*str;
 
-	str = *psr_status_raw();
+	str = *psr_error_raw();
 	return (str);
 }
