@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   par_status.c                                       :+:      :+:    :+:   */
+/*   psr_status.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/20 11:00:00 by yushsato          #+#    #+#             */
-/*   Updated: 2024/01/20 11:00:00 by yushsato         ###   ########.fr       */
+/*   Updated: 2024/03/08 19:00:26 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	psr_status_init(void)
 	*str = NULL;
 }
 
-char	*psr_status_set(char *stats)
+char	*psr_status_add(char *stats)
 {
 	char	**str;
 	char	*tmp;
@@ -42,7 +42,7 @@ char	*psr_status_set(char *stats)
 		free(tmp);
 	}
 	else
-		*str = ft_strdup(stats);
+		*str = ft_strjoin(stats, "\n");
 	return (*str);
 }
 
