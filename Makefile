@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+         #
+#    By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 16:07:14 by yushsato          #+#    #+#              #
-#    Updated: 2024/01/17 21:36:39 by nsakanou         ###   ########.fr        #
+#    Updated: 2024/03/08 18:56:38 by yushsato         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ SRCS	= ./src/ms_token.c \
 		  ./src/lexer/lxr_semicolon.c \
 		  ./src/lexer/lxr_redirect.c \
 		  ./src/lexer/lxr_lexer.c \
-		  ./src/parser/psr_doll.c \
 		  ./src/parser/psr_parser.c \
 		  ./src/parser/psr_status.c \
 		  ./src/dms_token.c \
