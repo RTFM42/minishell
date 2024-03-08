@@ -6,7 +6,7 @@
 /*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:22:18 by yushsato          #+#    #+#             */
-/*   Updated: 2024/03/08 19:53:23 by yushsato         ###   ########.fr       */
+/*   Updated: 2024/03/08 21:41:25 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,7 @@ int	lxr_token(char *str, t_token *chain)
 			i += lxr_2quote(&str[i]);
 		else if (str[i] == '\'')
 			i += lxr_1quote(&str[i]);
-		else if (str[i] == '\\'
-			&& (str[i + 1] == ' ' || str[i + 1] == '>' || str[i + 1] == '<'
-				|| str[i + 1] == '|' || str[i + 1] == ';'))
+		else if (str[i] == '\\')
 			i += 2;
 		else
 			i++;
