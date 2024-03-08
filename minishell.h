@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*   By: yushsato <yushsato@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 17:43:26 by yushsato          #+#    #+#             */
-/*   Updated: 2024/01/17 21:33:25 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/03/08 20:08:02 by yushsato         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,9 @@ int		lxr_pipe(char *str, t_token *chain);
 int		lxr_redirect(char *str, t_token *chain);
 int		lxr_semicolon(char *str, t_token *chain);
 int		lxr_token(char *str, t_token *chain);
-void	psr_status_init(void);
-char	*psr_status_set(char *stats);
-char	*psr_status_get(void);
-char	*psr_doll(char *cache, char **pstr);
+void	psr_error_init(void);
+char	*psr_error_set(char *stats);
+char	*psr_error_get(void);
 t_token	*psr_parser(t_token *chain);
 
 #endif
