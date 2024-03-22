@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 18:23:20 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/20 13:19:01 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/03/22 14:58:00 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_env	*lstlast(t_env *lst);
 
 //export
 char	check_type(char *str);
-void	export_putenvs(t_env *env);
+void	export_sortenvs(t_env *env);
 char	*export_strjoin(const char *s1, const char *s2);
 int		export_insert(char *arg, t_env *env);
 

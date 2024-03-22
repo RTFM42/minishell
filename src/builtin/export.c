@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:09 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/20 13:19:33 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/03/22 15:00:44 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,18 @@ static t_env	*export_envcpy(t_env *env)
 	return (head);
 }
 
+static t_env	*export_putenv(t_env *env)
+{
+	if (!ft_memcmp(env->name, "_", 2)
+		|| !(ft_isalpha(env->name[0]) || env->name[0] == '_'))
+		return (env);
+	if (env->value)
+		ft_printf("declare -x %s=\"%s\"\n", env->name, env->value);
+	else
+		ft_printf("declare -x %s\n", env->name);
+	return (env);
+}
+
 static t_env	*export_swap(t_env *env)
 {
 	char	*tmp;
@@ -48,19 +60,7 @@ static t_env	*export_swap(t_env *env)
 	return (env);
 }
 
-static t_env	*export_putenv(t_env *env)
-{
-	if (!ft_memcmp(env->name, "_", 2)
-		|| !(ft_isalpha(env->name[0]) || env->name[0] == '_'))
-		return (env);
-	if (env->value)
-		ft_printf("declare -x %s=\"%s\"\n", env->name, env->value);
-	else
-		ft_printf("declare -x %s\n", env->name);
-	return (env);
-}
-
-void	export_putenvs(t_env *env)
+void	export_sortenvs(t_env *env)
 {
 	t_env	*copy;
 	t_env	*prev;
@@ -97,7 +97,7 @@ int	export_command(char **argv)
 	ret = 0;
 	env = (*env_store())->next;
 	if (ft_memcpy(&env, &(*env_store())->next, sizeof(void *)) && !argv[1])
-		export_putenvs(env);
+		export_sortenvs(env);
 	while (env_update("?", ft_itoa(ret)) && *++argv)
 		if (export_insert(*argv, env))
 			ret = 1;

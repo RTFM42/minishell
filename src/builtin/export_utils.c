@@ -6,7 +6,7 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 21:41:00 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/01/18 18:54:39 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/03/22 16:14:28 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,23 @@ static void	export_insert_plus(t_env *env, char *value)
 	free(temp);
 }
 
+static void	export_rewrite_value(t_env *env, char *name, char *new_value)
+{
+	if (env == NULL || name == NULL || new_value == NULL)
+		return ;
+	while (env)
+	{
+		if (env->name && ft_strcmp(env->name, name) == 0)
+		{
+			if (env->value)
+				free(env->value);
+			env->value = ft_strdup(new_value);
+			return ;
+		}
+		env = env->next;
+	}
+}
+
 int	export_insert(char *arg, t_env *env)
 {
 	char	*name;
@@ -73,7 +90,7 @@ int	export_insert(char *arg, t_env *env)
 	else if (check_type(arg) == '=' && env == NULL)
 		env_list_add(env_store(), name, value);
 	else if (check_type(arg) == '=')
-		env_search(env, name)->value = value;
+		export_rewrite_value(*env_store(), name, value);
 	else if (check_type(arg) == '+' && env == NULL)
 		env_list_add(env_store(), name, value);
 	else if (check_type(arg) == '+')
