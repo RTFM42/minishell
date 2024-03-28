@@ -6,125 +6,106 @@
 /*   By: nsakanou <nsakanou@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 17:53:04 by nsakanou          #+#    #+#             */
-/*   Updated: 2024/03/22 19:18:56 by nsakanou         ###   ########.fr       */
+/*   Updated: 2024/03/28 18:41:35 by nsakanou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../builtin.h"
 //与えられた文字列が数字のみから構成されるかどうかをチェック
-bool	isdigit_str(char *str)
+bool	is_all_digit(char *str)
 {
-	size_t	i;
-	int		flag;
-
-	i = 0;
-	flag = 1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i])
+	while (*str)
 	{
-		if (str[i] == ' ' || str[i] == '\t')
-			i++;
-		if (ft_isdigit(str[i]))
-			flag = 0;
-		else
-			break ;
-		i++;
+		if (!ft_isdigit(*str))
+			return (false);
+		str++;
 	}
-	if (str[i] == '\0' && flag == 0)
-		return (true);
-	else
-		return (false);
+	return (true);
 }
 //true　数字のみ、 false　数字以外
 
-// bool	check_exit_args(char **argv)
-// {
-// 	size_t	i;
-// 	size_t	argc;
-
-// 	i = 0;
-// 	argc = 0;
-// 	while (argv[argc])
-// 		argc++;
-// 	while (i < argc)
-// 	{
-// 		if (isdigit_str(argv[i])
-// 			&& !ft_isalpha(argv[i + 1][0]))
-// 			return (true);
-// 		else if (ft_isalpha(argv[i][0]))
-// 			return (true);
-// 		else if (isdigit_str(argv[i])
-// 			&& ft_isalpha(argv[i + 1][0]))
-// 			return (false);
-// 		i++;
-// 	}
-// 	return (false);
-// }
-//true->exitできる、 false->exitできない
-
-static int	check_exit_args(char **argv)
+static int	count_argc(char **argv)
 {
 	int	argc;
 	int	i;
-	int	status;
 
-	i = 1;
-	argc = 1;
-	status = 0;
-	while (argv[argc])
-		argc++;
-	while (i < argc)
+	i = 1;//exitの分
+	argc = 0;
+	if (argv[i + 1])//引数がある時
 	{
-		if (isdigit_str(argv[i]) && argv[i + 1])//exit 2
-			status = i;//exit 256以上の処理を入れる(メモみる)
-		else if ((ft_isalpha(argv[1][0]) && ft_isdigit(argv[i + 1][0]))
-			|| (ft_isdigit(argv[1][0]) && ft_isalnum(argv[1][1])))//exit a 3 5, exit a 3asd, exit 234sdfg
-		{
-			printf("numeric argument required\n");
-			status = 255;
-		}
-		else if (isdigit_str(argv[i])
-			&& ft_isalpha(argv[i + 1][0]))
-		{
-			ft_eprintf("argument error.\n");
-			return (false);
-		}
-		i++;
+		while (argv[argc + 1])
+			argc++;
 	}
-	return (status);
+	return (argc);
 }
 
+int	can_exit(char **argv)
+{
+	int		status;
+
+	status = 0;
+	if (count_argc(argv) == 0) // exitのみ
+		exit(0);
+	else if (count_argc(argv) == 1 && is_all_digits(argv[1]))// exit 1とか
+	{
+		status = ft_atoi(argv[1]);
+		while (status > 255)
+			status = status % 255;
+		exit (status);
+	}
+	else if (count_argc(argv) >= 1 && (ft_isalpha(argv[1][1]) && )//exit status 255-> exit a,exit a 3 5 exit 234sdfg, exit asd1234,
+	{
+		if (check_exit_args(argv)) //できる
+			exit(status);
+	}
+}
+/*
+exitできる
+→exit 234sdfg, exit asd1234, exit 12qwer 2 4 :numeric argument required   status 255
+→exit a 3 5, exit a  :numeric argument required  status 255
+→exit 255   :status 255
+→exit   :status 0
+*/
+
+
+int	cannot_exit(char **argv)
+{
+	if (!isdigit_str(*argv))//exit a d s できない
+		printf("numeric argument required\n");
+	else if (isdigit_str(*argv))//exit 1 2 できない
+		printf("too many arguments\n");
+}
 /*
 exitできない
 →exit 1 2, exit 1 a   :too many arguments最初の引数が数字だとexitしない
 →exit a d s    ：numeric argument required引数に数字がないとexitできない
 */
 
-/*
-exitできる
-→exit 234sdfg, exit 12qwer 2 4 :numeric argument required   status 255
-→exit a 3 5  :numeric argument required  status 255
-→exit 255   :status 255
-→exit   :status 0
-*/
 
 int	exit_command(char **argv)
 {
-	size_t	i;
 	int		status;
 	t_env	*def;
 
-	i = 0;
 	status = 0;
-	if (argv[i + 1])//exitのみ
+	if (count_argc(argv) == 0) // exitのみ
 		exit(0);
-	if (!isdigit_str(*argv))//exit a d s
-		printf("numeric argument required\n");
-	if (isdigit_str(*argv))//exit 1 2
-		printf("too many arguments\n");
-	if (check_exit_args(argv))
-		exit(status);
+	else if (count_argc(argv) == 1 && is_all_digits(argv[1]))// exit 1とか
+	{
+		status = ft_atoi(argv[1]);
+		while (status > 255)
+			status = status % 255;
+		exit (status);
+	}
+	else if (count_argc(argv) >= 1 && ft_isalpha(argv[1][1]))//exit status 255-> exit a,exit a 3 5 exit 234sdfg, exit asd1234,
+	{
+		if (!isdigit_str(*argv))//exit a d s できない
+			printf("numeric argument required\n");
+		else if (isdigit_str(*argv))//exit 1 2 できない
+			printf("too many arguments\n");
+		else if (check_exit_args(argv)) //できる
+			exit(status);
+	}
 	else
 	{
 		def = env_search(*(env_store()), "?");
